@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  web:
+    image: fastapi-template:latest
+    container_name: "fastapi-template"
+    restart: on-failure
+    env_file:
+      - .env
+    command: ./start_web.sh
+    ports:
+      - "5000:8000"
+    networks:
+      - template_service
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16
+    container_name: "template-database"
+    restart: on-failure
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - $PWD/.ignore_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "4000:5432"
+    networks:
+      - template_service
+    healthcheck:
+        test: ["CMD", "pg_isready",  "-U", "${DB_USER}", "-d", "${DB_NAME}"]
+
+networks:
+  template_service:
+    name: template_network

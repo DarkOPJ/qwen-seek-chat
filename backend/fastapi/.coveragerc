@@ -1,0 +1,7 @@
+[run]
+source = .
+omit =
+    migrations/*
+    tests/*
+[report]
+fail_under = 80
