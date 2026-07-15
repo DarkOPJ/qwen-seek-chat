@@ -1,0 +1,357 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style="width: 1280px; height: 3641px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .inner-glow-px {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A3A3A3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .neural-orb {
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e2e3e1",
+                        "tertiary-container": "#1b1b1b",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "on-tertiary-container": "#848484",
+                        "surface-container-high": "#e8e8e6",
+                        "on-background": "#1a1c1b",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-primary-fixed-variant": "#474747",
+                        "secondary-fixed": "#e4e2e2",
+                        "neural-indigo": "#6366F1",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-dim": "#dadad8",
+                        "surface-container": "#eeeeec",
+                        "surface-card": "#FCFCFB",
+                        "surface": "#000000",
+                        "primary-fixed": "#e2e2e2",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-secondary-container": "#626262",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#848484",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "accent-emerald": "#10B981",
+                        "surface-container-low": "#f4f4f2",
+                        "secondary-container": "#e1dfdf",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5e5e5e",
+                        "primary-container": "#1b1b1b",
+                        "on-surface-variant": "#4c4546",
+                        "tertiary": "#000000",
+                        "background": "#000000",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "outline-variant": "#cfc4c5",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9f7",
+                        "neural-purple": "#A855F7",
+                        "primary": "#ffffff",
+                        "on-surface": "#ffffff",
+                        "surface-panel": "#111111",
+                        "inverse-surface": "#2f3130",
+                        "inverse-primary": "#c6c6c6",
+                        "border-subtle": "rgba(255,255,255,0.1)",
+                        "secondary": "#a3a3a3",
+                        "inverse-on-surface": "#f1f1ef",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-variant": "#1a1c1b",
+                        "outline": "#4c4546",
+                        "on-primary-fixed": "#1b1b1b",
+                        "neural-rose": "#FB7185"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "margin": "32px",
+                        "section-gap-mobile": "80px",
+                        "max-width": "1280px",
+                        "section-gap-desktop": "180px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Geist"],
+                        "h1-mobile": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-caps": ["Geist"],
+                        "mono-metrics": ["JetBrains Mono"],
+                        "h3": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "h2": ["Geist"]
+                    },
+                    "fontSize": {
+                        "h1": ["84px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "h1-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "mono-metrics": ["12px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "700"}],
+                        "h3": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "h2": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md dark">
+<!-- Global Background Animation Wrapper -->
+<div class="fixed inset-0 -z-50 overflow-hidden bg-black">
+
+<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-neural-indigo neural-orb rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-neural-purple neural-orb rounded-full"></div>
+</div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-white/5 backdrop-blur-3xl border-b border-white/10 inner-glow-px">
+<div class="max-w-max-width mx-auto flex justify-between items-center h-[64px] px-margin"><div class="flex items-center gap-3"><img alt="Orbital Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMPCU7cmZzySI52lo6V1laMGP5XcZkFmR5kNv9LnzejsflsDy022PqESXuLLHny8Vt73Iyg-tLbXirPHfBEkXD2UWWo_l_iyZMk1_GqTcGI6ueZ2xzApJt4VtJry95AAyQkrTQAkBVMqre-iCsCB6dzSkbElY6XskkJD9Za2Zed_WBfdLp6cUj_biBVipchRM1jOqYIdDfgWPp2Bx-q7anKoF8jx89OOx-tnvgPqctXZ4ruvyxdiDjFTHOOliGqAap1lo"><span class="font-h3 text-h3 font-semibold tracking-tighter text-primary">Orbital</span></div>
+<div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Models</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Workspace</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Pricing</a>
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Enterprise</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-tertiary px-6 py-2 rounded-full font-semibold hover:opacity-90 active:scale-95 transition-all text-body-md">Get Started</button>
+</div></div>
+</nav>
+<main class="relative">
+<!-- Hero Section -->
+<section class="pt-[160px] pb-section-gap-desktop max-w-max-width mx-auto px-margin text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-white/10 bg-white/5 mb-8">
+<span class="w-2 h-2 rounded-full bg-accent-emerald animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">Orbital for Enterprise</span>
+</div>
+<h1 class="font-h1 text-h1-mobile md:text-h1 text-gradient mb-8 max-w-[900px] mx-auto">
+                Intelligence, secured and scaled.
+            </h1>
+<p class="text-secondary font-body-lg text-body-lg max-w-[600px] mx-auto mb-12">
+                Deploy state-of-the-art AI infrastructure with absolute control, enterprise-grade security, and precision orchestration.
+            </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-4">
+<button class="w-full md:w-auto bg-primary text-tertiary px-10 py-4 rounded-full font-bold text-body-lg hover:bg-neutral-200 transition-all shadow-2xl">
+                    Contact Sales
+                </button>
+<button class="w-full md:w-auto border border-white/20 text-primary px-10 py-4 rounded-full font-bold text-body-lg hover:bg-white/5 transition-all">
+                    Request Demo
+                </button>
+</div>
+</section>
+<!-- Trusted By Section -->
+<section class="py-12 border-y border-white/5 bg-black/20">
+<div class="max-w-max-width mx-auto px-margin">
+<p class="text-center font-label-caps text-label-caps text-secondary mb-10 opacity-60">POWERING THE NEXT GENERATION OF INTELLIGENT ENTERPRISE</p>
+<div class="relative overflow-hidden py-4"><style class="">
+  @keyframes marquee-scroll {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+  .animate-marquee {
+    animation: marquee-scroll 40s linear infinite;
+  }
+</style>
+<div class="flex animate-marquee whitespace-nowrap gap-24 items-center w-max">
+  <div class="flex shrink-0 items-center gap-24 transition-all duration-500">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATMEnxZxvPLYrDjs1wnLV_cftAvF8iL28oYjYdGkbGEhqhIri9FanPbjNBw8omoNRVhcDK292t-pBvddMewLmRptopmVy_B1EGXSf6GNR6sd3IhhJJ5AF4JG9Ew2fQrI_NIe2mAxb6HFPD-8bh_h1ySEXUhW45dykFwZwbnKQouqLpjw5QiqRBucE3YcXq8D7cdRRsNuYfoVAOGDTmfRAjHwY7eilq7rq6Nz9DWQk18BKv6KOI1w1MOcu5TXiblYKRiyU" alt="DeepSeek" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQG9GnoZwrBpjXqdAZ642eYLijw-XNNkdhdTK67bNw-D_OqFLuVzSCscNFgazQCYl1f5SOgQpiNEG0kOz5wRVVnbN4vbCHBxrsKd5WE9ihvG6uKb5i7dfsHXofmQ1eUT2LzPJ0hJhkzWmAA8Q_jZemL1kR_nlwvOt2BqO8K9ZKIgYmz3Yg7g8LIN0MKUXwarJ4DHofwx0JAsSpthFgQqb4er1RjSIeyBgaodhiIvceptrnrcTGEC2aUTykhput5x2mR6A" alt="Gemma" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdx00jyYqF7MesvSpcQ-qNAn0Wg7EMjx62xEzUwQ6jvGmCIMdB1OXXiAtWhFIXg5eVE1SMKVVK8gqHdG2Dut0Lo8z-TI22hM6WYyAUBByEsEMJdtRKcfTrnP3BXlu0afqZ7WjeQ3TT0NcWBE4HrjfIuGYty9lwoLyPqIODkGgHuY0_Kw3N0PNeqzal6j9cBD-Px6yoxkwhbYYwebUpYJ_LlsFam72z0Q9I_QSP2Vi5OtTm2rXEfmT5g9fw7gzt1u_BVOE" alt="GLM" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu4f0P2H7lYA-MziEtqyPrQAqzaPqbcCOJyaWZ9FNapN1aoADl-iE5AzOX5l8jyh8dd8Whp2tqz8h9ypiuSFF9m47x3J_fR1iGM57H9oy07_O6zk6-FbtqMQB82uwjULtDwQzcmW02v91Tdj_NzfYPt-qtXGUz9cFziEMarVisCTy8hwAac9yRPi_q7ynPpFJHeYvErA2Z92JTxpS6pq4dcfns0_EC-nn-yCu00QUpYmy8pqlH2gP6UTQdVwz46t6Iq9k" alt="GPT-OSS" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsiS66_80cFzY7WDIcY4lh9mLiea6UPPmYarZ5JyNen0BBxrl6wM1h8zDRzA6BBmuDcLvnNRixmrTF61_DthG-D5r1wzFTPhtZdOSXz02USNVYGZ5JALfVxkt8PJ0C_IY4MnfChLexh8htab_hFFqWPt4yWXOczLy7ZxKza_XLZkMN_jbaApr4Wxd5daTGGf1Yb4sMX3WiwJBU1bYb0HCWdpwEstvYU_6F3FvP6oIQiW0UxzMIE8U3odYBA2MX5R-LjiM" alt="Kimi" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArIFW9IdN0Wc3LX_7FqEDvkgjnGJHU99KR_DEU7Pe5WzNWAQrEidUfD1xZ-ajuTsR69VPA95N4OR61IR6zSYh5kCPNCqDNK2dr980hsFWPRcAC4gd_8ssQ276u8BrNTsoEPMFOKm3a8O6SxnKCDFR_stf1nyLXaaIfzRTFFmVrGbE3Fnij8_i-7IyACwOGRENIwAS7AOOigAxW1xYTCBZPBURVZ7Bmc3k8fA_i_IcqzOfjjtfyjq7tYgYG9g1jddHNo7Q" alt="MiniMax" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2pXChzpWdPiCSYPuE-Z3OLWWhiGW2r5qYCLmjKnZL0FLimOYWFMV90q1QRQCrNILSo0gnrff9abV7H0B2oVbwXLaCJND1uI91EeKbrfONSwxQqs0kCOLc99XLSwL7ebM5PtTU96ej6UObvKUZ6iLgmu0Y3alHKaWd7lApEb6rCUAtHqG3kp6R0eQKuDwbiPxZMk_cD-r9MLjFS5occ77dkzeM7ZBWn-TCarfxGH_3NsIbrIYYe8Nckb_JF2pulfxQev0" alt="Mistral" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrep69f3wUc5N8nuE1RL7zaGI_sMoldOqEHu3VMz1NP7N8kyh25KsRUOvr7flUQj5kzEkT9ArRhtMQlajs63mZpnV1VT1Sh443ZSjYB4ZY8AlG7ADyDEhRJdooLwyiLmeD0bs_b0N72P_9YOfwd_51KWx2-ZtjEG3BenuwLpkLMc7R054KLec6l0Z-bf3cgvqNq032KmwZ7PldOH8mSj82ZPjZGJ-3Wl7qKoZ8hB1jYW_t_tl6QpVnM4shvCNoi-vgJqo" alt="Qwen" class="h-8 w-auto object-contain">
+  </div>
+  <div class="flex shrink-0 items-center gap-24 transition-all duration-500">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuATMEnxZxvPLYrDjs1wnLV_cftAvF8iL28oYjYdGkbGEhqhIri9FanPbjNBw8omoNRVhcDK292t-pBvddMewLmRptopmVy_B1EGXSf6GNR6sd3IhhJJ5AF4JG9Ew2fQrI_NIe2mAxb6HFPD-8bh_h1ySEXUhW45dykFwZwbnKQouqLpjw5QiqRBucE3YcXq8D7cdRRsNuYfoVAOGDTmfRAjHwY7eilq7rq6Nz9DWQk18BKv6KOI1w1MOcu5TXiblYKRiyU" alt="DeepSeek" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQG9GnoZwrBpjXqdAZ642eYLijw-XNNkdhdTK67bNw-D_OqFLuVzSCscNFgazQCYl1f5SOgQpiNEG0kOz5wRVVnbN4vbCHBxrsKd5WE9ihvG6uKb5i7dfsHXofmQ1eUT2LzPJ0hJhkzWmAA8Q_jZemL1kR_nlwvOt2BqO8K9ZKIgYmz3Yg7g8LIN0MKUXwarJ4DHofwx0JAsSpthFgQqb4er1RjSIeyBgaodhiIvceptrnrcTGEC2aUTykhput5x2mR6A" alt="Gemma" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdx00jyYqF7MesvSpcQ-qNAn0Wg7EMjx62xEzUwQ6jvGmCIMdB1OXXiAtWhFIXg5eVE1SMKVVK8gqHdG2Dut0Lo8z-TI22hM6WYyAUBByEsEMJdtRKcfTrnP3BXlu0afqZ7WjeQ3TT0NcWBE4HrjfIuGYty9lwoLyPqIODkGgHuY0_Kw3N0PNeqzal6j9cBD-Px6yoxkwhbYYwebUpYJ_LlsFam72z0Q9I_QSP2Vi5OtTm2rXEfmT5g9fw7gzt1u_BVOE" alt="GLM" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu4f0P2H7lYA-MziEtqyPrQAqzaPqbcCOJyaWZ9FNapN1aoADl-iE5AzOX5l8jyh8dd8Whp2tqz8h9ypiuSFF9m47x3J_fR1iGM57H9oy07_O6zk6-FbtqMQB82uwjULtDwQzcmW02v91Tdj_NzfYPt-qtXGUz9cFziEMarVisCTy8hwAac9yRPi_q7ynPpFJHeYvErA2Z92JTxpS6pq4dcfns0_EC-nn-yCu00QUpYmy8pqlH2gP6UTQdVwz46t6Iq9k" alt="GPT-OSS" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsiS66_80cFzY7WDIcY4lh9mLiea6UPPmYarZ5JyNen0BBxrl6wM1h8zDRzA6BBmuDcLvnNRixmrTF61_DthG-D5r1wzFTPhtZdOSXz02USNVYGZ5JALfVxkt8PJ0C_IY4MnfChLexh8htab_hFFqWPt4yWXOczLy7ZxKza_XLZkMN_jbaApr4Wxd5daTGGf1Yb4sMX3WiwJBU1bYb0HCWdpwEstvYU_6F3FvP6oIQiW0UxzMIE8U3odYBA2MX5R-LjiM" alt="Kimi" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArIFW9IdN0Wc3LX_7FqEDvkgjnGJHU99KR_DEU7Pe5WzNWAQrEidUfD1xZ-ajuTsR69VPA95N4OR61IR6zSYh5kCPNCqDNK2dr980hsFWPRcAC4gd_8ssQ276u8BrNTsoEPMFOKm3a8O6SxnKCDFR_stf1nyLXaaIfzRTFFmVrGbE3Fnij8_i-7IyACwOGRENIwAS7AOOigAxW1xYTCBZPBURVZ7Bmc3k8fA_i_IcqzOfjjtfyjq7tYgYG9g1jddHNo7Q" alt="MiniMax" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2pXChzpWdPiCSYPuE-Z3OLWWhiGW2r5qYCLmjKnZL0FLimOYWFMV90q1QRQCrNILSo0gnrff9abV7H0B2oVbwXLaCJND1uI91EeKbrfONSwxQqs0kCOLc99XLSwL7ebM5PtTU96ej6UObvKUZ6iLgmu0Y3alHKaWd7lApEb6rCUAtHqG3kp6R0eQKuDwbiPxZMk_cD-r9MLjFS5occ77dkzeM7ZBWn-TCarfxGH_3NsIbrIYYe8Nckb_JF2pulfxQev0" alt="Mistral" class="h-8 w-auto object-contain">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrep69f3wUc5N8nuE1RL7zaGI_sMoldOqEHu3VMz1NP7N8kyh25KsRUOvr7flUQj5kzEkT9ArRhtMQlajs63mZpnV1VT1Sh443ZSjYB4ZY8AlG7ADyDEhRJdooLwyiLmeD0bs_b0N72P_9YOfwd_51KWx2-ZtjEG3BenuwLpkLMc7R054KLec6l0Z-bf3cgvqNq032KmwZ7PldOH8mSj82ZPjZGJ-3Wl7qKoZ8hB1jYW_t_tl6QpVnM4shvCNoi-vgJqo" alt="Qwen" class="h-8 w-auto object-contain">
+  </div>
+</div>
+<div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
+<div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10"></div></div>
+</div>
+</section>
+<!-- Key Value Props -->
+<section class="py-section-gap-desktop max-w-max-width mx-auto px-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass-card p-10 rounded-xl group hover:border-white/20 transition-all">
+<div class="w-14 h-14 rounded-lg bg-neural-indigo/10 flex items-center justify-center mb-8 border border-neural-indigo/20">
+<span class="material-symbols-outlined text-neural-indigo" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<h3 class="font-h3 text-h3 mb-4 text-primary">Security &amp; Compliance</h3>
+<p class="text-secondary font-body-md text-body-md leading-relaxed">
+                        SOC2 Type II certified. Data residency options in 20+ regions with zero-retention policies as the default standard.
+                    </p>
+<ul class="mt-8 space-y-3">
+<li class="flex items-center gap-3 text-secondary text-label-caps">
+<span class="material-symbols-outlined text-accent-emerald text-sm">check_circle</span>
+                            ENCRYPTION AT REST &amp; TRANSIT
+                        </li>
+<li class="flex items-center gap-3 text-secondary text-label-caps">
+<span class="material-symbols-outlined text-accent-emerald text-sm">check_circle</span>
+                            BYOK (BRING YOUR OWN KEY)
+                        </li>
+</ul>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-10 rounded-xl border-white/20 relative overflow-hidden group">
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-accent-emerald/10 blur-[60px]"></div>
+<div class="w-14 h-14 rounded-lg bg-accent-emerald/10 flex items-center justify-center mb-8 border border-accent-emerald/20">
+<span class="material-symbols-outlined text-accent-emerald" style="font-variation-settings: 'FILL' 1;">hub</span>
+</div>
+<h3 class="font-h3 text-h3 mb-4 text-primary">Custom Model Orchestration</h3>
+<p class="text-secondary font-body-md text-body-md leading-relaxed">
+                        Deploy private, optimized instances of DeepSeek, Qwen, and Llama within your own virtual private cloud perimeter.
+                    </p>
+<div class="mt-8 flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded bg-white/5 text-[10px] font-mono-metrics text-secondary uppercase border border-white/10 tracking-widest">DeepSeek-V3</span>
+<span class="px-3 py-1 rounded bg-white/5 text-[10px] font-mono-metrics text-secondary uppercase border border-white/10 tracking-widest">Qwen-2.5</span>
+<span class="px-3 py-1 rounded bg-white/5 text-[10px] font-mono-metrics text-secondary uppercase border border-white/10 tracking-widest">Llama-3.1</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-10 rounded-xl group hover:border-white/20 transition-all">
+<div class="w-14 h-14 rounded-lg bg-neural-purple/10 flex items-center justify-center mb-8 border border-neural-purple/20">
+<span class="material-symbols-outlined text-neural-purple" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h3 class="font-h3 text-h3 mb-4 text-primary">Administrative Control</h3>
+<p class="text-secondary font-body-md text-body-md leading-relaxed">
+                        Full SSO/SCIM integration with granular RBAC and real-time usage analytics across your entire global workforce.
+                    </p>
+<ul class="mt-8 space-y-3">
+<li class="flex items-center gap-3 text-secondary text-label-caps">
+<span class="material-symbols-outlined text-accent-emerald text-sm">check_circle</span>
+                            OKTA &amp; AZURE AD SUPPORT
+                        </li>
+<li class="flex items-center gap-3 text-secondary text-label-caps">
+<span class="material-symbols-outlined text-accent-emerald text-sm">check_circle</span>
+                            COST ATTRIBUTION API
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Visualization Section -->
+<section class="py-section-gap-desktop relative overflow-hidden bg-black"><div class="max-w-max-width mx-auto px-margin relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div>
+<h2 class="font-h2 text-h2 mb-6 text-primary leading-tight">Enterprise-Grade Infrastructure</h2>
+<p class="text-secondary font-body-lg text-body-lg mb-8 leading-relaxed">
+                            Our proprietary edge network ensures sub-50ms latency globally, with built-in redundancy and failover mechanisms that guarantee 99.99% uptime for critical AI workloads.
+                        </p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="shrink-0 w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">public</span>
+</div>
+<div>
+<h4 class="text-primary font-bold mb-1">Global Edge Sync</h4>
+<p class="text-secondary text-sm">Instant synchronization of model weights and context across 140+ PoPs.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">bolt</span>
+</div>
+<div>
+<h4 class="text-primary font-bold mb-1">Auto-Scaling Compute</h4>
+<p class="text-secondary text-sm">Dynamically allocate H100/A100 clusters based on real-time traffic spikes.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sophisticated UI Visualization -->
+<div class="relative aspect-square md:aspect-video lg:aspect-square bg-black/40 rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
+
+<div class="absolute inset-0 flex items-center justify-center p-12">
+<div class="w-full h-full border border-white/5 rounded-full relative animate-[spin_60s_linear_infinite]">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-neural-indigo rounded-full shadow-[0_0_20px_#6366F1]"></div>
+<div class="absolute bottom-1/4 left-0 w-3 h-3 bg-accent-emerald rounded-full shadow-[0_0_15px_#10B981]"></div>
+<div class="absolute top-1/2 right-0 w-3 h-3 bg-neural-purple rounded-full shadow-[0_0_15px_#A855F7]"></div>
+</div>
+<div class="absolute w-3/4 h-3/4 border border-white/5 rounded-full animate-[spin_40s_linear_infinite_reverse]"></div>
+<div class="absolute w-1/2 h-1/2 border border-white/10 rounded-full flex items-center justify-center bg-black/60 backdrop-blur-md">
+<span class="material-symbols-outlined text-primary text-6xl">language</span>
+</div>
+</div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between">
+<div class="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-lg flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-accent-emerald"></div>
+<span class="text-[10px] font-mono-metrics text-primary uppercase">Nodes Active: 142</span>
+</div>
+<div class="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-lg flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-neural-indigo"></div>
+<span class="text-[10px] font-mono-metrics text-primary uppercase">Latency: 24ms</span>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<!-- Final Sign-off -->
+<section class="py-section-gap-desktop text-center max-w-max-width mx-auto px-margin">
+<h2 class="font-h2 text-h2-mobile md:text-h2 text-primary mb-8">Ready to scale?</h2>
+<p class="text-secondary font-body-lg text-body-lg max-w-[600px] mx-auto mb-12">
+                Join 500+ enterprises building the future of autonomous intelligence on Orbital.
+            </p>
+<button class="bg-primary text-tertiary px-12 py-5 rounded-full font-bold text-body-lg hover:scale-105 active:scale-95 transition-all shadow-xl">
+                Talk to Sales
+            </button>
+<p class="mt-8 text-secondary font-label-caps text-label-caps opacity-50">OR EXPLORE OUR <a class="underline hover:text-primary" href="#">DEVELOPER DOCUMENTATION</a></p>
+</section>
+</main>
+<!-- Transparent Footer -->
+<footer class="w-full py-section-gap-mobile border-t border-white/5 relative overflow-hidden bg-black"><div class="max-w-max-width mx-auto px-margin flex flex-col md:flex-row justify-between items-center gap-8"><div class="flex items-center gap-3"><img alt="Orbital Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzqplbwIgfd6fVGrp7WyBEp_mw3Yzg7mbmqp6P6sZICtuxl3OFQOafGdjharRq2FtYC11dFXmEA11DnI4cU3IgiuSHmWONufV1tTz385SJruio5ES-PsVYKP9BijtQht6NdwBPrKMtQAIS4CdGorNppp1OKI-a-c0MduTP04EXD0F0AY1SPZII301lyNyx6-YqIKvao8bEogXcj2AA9FyhSJ9FCDjFCC9fzSPhhhC7VpNqJbmtP_5vPW4udfx1gKyL9Lw"><span class="font-h3 text-h3 font-bold text-primary">Orbital</span></div><p class="text-secondary text-label-caps tracking-widest opacity-60">© 2026 ORBITAL AI. ALL RIGHTS RESERVED.</p></div></footer>
+<script>
+        // Simple parallax or</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

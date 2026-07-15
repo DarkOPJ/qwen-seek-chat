@@ -1,0 +1,606 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors from UI screens */
+  --color-neural-purple: #A855F7;
+  --color-neural-indigo: #6366F1;
+  --color-accent-emerald: #10B981;
+  --color-neural-rose: #FB7185;
+
+  /* Semantic colors (dark mode - primary theme from AI chat screen) */
+  --color-background: #000000;
+  --color-surface: #000000;
+  --color-surface-panel: #09090B;
+  --color-surface-card: #09090B;
+  --color-surface-container: #18181B;
+  --color-surface-container-low: #121212;
+  --color-surface-container-high: #1C1C1F;
+  --color-surface-container-highest: #27272A;
+  --color-surface-container-lowest: #000000;
+  --color-surface-dim: #09090B;
+  --color-surface-bright: #18181B;
+  --color-surface-variant: #27272A;
+  --color-surface-tint: #A1A1AA;
+
+  --color-on-surface: #FFFFFF;
+  --color-on-surface-variant: #A1A1AA;
+  --color-on-background: #FFFFFF;
+  --color-on-primary: #000000;
+  --color-on-primary-container: #000000;
+  --color-on-primary-fixed: #000000;
+  --color-on-primary-fixed-variant: #000000;
+  --color-on-secondary: #000000;
+  --color-on-secondary-container: #A1A1AA;
+  --color-on-secondary-fixed: #1B1C1C;
+  --color-on-secondary-fixed-variant: #A1A1AA;
+  --color-on-tertiary: #000000;
+  --color-on-tertiary-container: #71717A;
+  --color-on-tertiary-fixed: #FFFFFF;
+  --color-on-tertiary-fixed-variant: #A1A1AA;
+  --color-on-error: #FFFFFF;
+  --color-on-error-container: #93000A;
+
+  --color-primary: #FFFFFF;
+  --color-primary-container: #FFFFFF;
+  --color-primary-fixed: #E2E2E2;
+  --color-primary-fixed-dim: #C6C6C6;
+  --color-inverse-primary: #000000;
+
+  --color-secondary: #A1A1AA;
+  --color-secondary-container: #27272A;
+  --color-secondary-fixed: #E4E2E2;
+  --color-secondary-fixed-dim: #C7C6C6;
+  --color-inverse-surface: #F1F1EF;
+  --color-inverse-on-surface: #2F3130;
+
+  --color-tertiary: #FFFFFF;
+  --color-tertiary-container: #1B1B1B;
+  --color-tertiary-fixed: #E2E2E2;
+  --color-tertiary-fixed-dim: #C6C6C6;
+
+  --color-error: #BA1A1A;
+  --color-error-container: #FFDAD6;
+
+  --color-outline: #52525B;
+  --color-outline-variant: #3F3F46;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+
+  /* Light mode semantic colors (from landing/pricing/enterprise screens) */
+  --color-light-background: #F9F9F7;
+  --color-light-surface: #F9F9F7;
+  --color-light-surface-panel: #F3F2EF;
+  --color-light-surface-card: #FCFCFB;
+  --color-light-surface-container: #EEEEEC;
+  --color-light-surface-container-low: #F4F4F2;
+  --color-light-surface-container-high: #E8E8E6;
+  --color-light-surface-container-highest: #E2E3E1;
+  --color-light-surface-container-lowest: #FFFFFF;
+  --color-light-surface-dim: #DADAD8.
+  --color-light-surface-bright: #F9F9F7.
+  --color-light-surface-variant: #E2E3E1.
+  --color-light-surface-tint: #5E5E5E.
+
+  --color-light-on-surface: #1A1C1B.
+  --color-light-on-surface-variant: #4C4546.
+  --color-light-on-background: #1A1C1B.
+  --color-light-on-primary: #FFFFFF.
+  --color-light-on-primary-container: #848484.
+  --color-light-on-primary-fixed: #1B1B1B.
+  --color-light-on-primary-fixed-variant: #474747.
+  --color-light-on-secondary: #FFFFFF.
+  --color-light-on-secondary-container: #626262.
+  --color-light-on-secondary-fixed: #1B1C1C.
+  --color-light-on-secondary-fixed-variant: #464747.
+  --color-light-on-tertiary: #FFFFFF.
+  --color-light-on-tertiary-container: #848484.
+  --color-light-on-tertiary-fixed: #1B1B1B.
+  --color-light-on-tertiary-fixed-variant: #474747.
+  --color-light-on-error: #FFFFFF.
+  --color-light-on-error-container: #93000A.
+
+  --color-light-primary: #000000.
+  --color-light-primary-container: #1B1B1B.
+  --color-light-primary-fixed: #E2E2E2.
+  --color-light-primary-fixed-dim: #C6C6C6.
+  --color-light-inverse-primary: #C6C6C6.
+
+  --color-light-secondary: #5E5E5E.
+  --color-light-secondary-container: #E1DFDF.
+  --color-light-secondary-fixed: #E4E2E2.
+  --color-light-secondary-fixed-dim: #C7C6C6.
+  --color-light-inverse-surface: #2F3130.
+  --color-light-inverse-on-surface: #F1F1EF.
+
+  --color-light-tertiary: #000000.
+  --color-light-tertiary-container: #1B1B1B.
+  --color-light-tertiary-fixed: #E2E2E2.
+  --color-light-tertiary-fixed-dim: #C6C6C6.
+
+  --color-light-error: #BA1A1A.
+  --color-light-error-container: #FFDAD6.
+
+  --color-light-outline: #7E7576.
+  --color-light-outline-variant: #CFC4C5.
+  --color-light-border-subtle: #E7E7E4.
+
+  /* Border radius */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-unit: 8px;
+  --spacing-gutter: 32px;
+  --spacing-margin: 32px;
+  --spacing-section-gap-desktop: 180px;
+  --spacing-section-gap-mobile: 80px;
+  --spacing-max-width: 1280px;
+
+  /* Font families */
+  --font-family-h1: "Geist", "Inter", sans-serif;
+  --font-family-h1-mobile: "Geist", "Inter", sans-serif;
+  --font-family-h2: "Geist", "Inter", sans-serif;
+  --font-family-h3: "Geist", "Inter", sans-serif;
+  --font-family-body-lg: "Geist", "Inter", sans-serif;
+  --font-family-body-md: "Geist", "Inter", sans-serif;
+  --font-family-label-caps: "Geist", "Inter", sans-serif;
+  --font-family-mono-metrics: "JetBrains Mono", monospace;
+
+  /* Font sizes */
+  --text-h1: 84px;
+  --text-h1-line-height: 1.05;
+  --text-h1-letter-spacing: -0.04em;
+  --text-h1-font-weight: 600;
+
+  --text-h1-mobile: 48px;
+  --text-h1-mobile-line-height: 1.1;
+  --text-h1-mobile-letter-spacing: -0.03em;
+  --text-h1-mobile-font-weight: 600;
+
+  --text-h2: 64px;
+  --text-h2-line-height: 1.1;
+  --text-h2-letter-spacing: -0.03em;
+  --text-h2-font-weight: 600;
+
+  --text-h3: 32px;
+  --text-h3-line-height: 1.2;
+  --text-h3-letter-spacing: -0.02em;
+  --text-h3-font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg-line-height: 1.6;
+  --text-body-lg-letter-spacing: -0.01em;
+  --text-body-lg-font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md-line-height: 1.5;
+  --text-body-md-letter-spacing: 0;
+  --text-body-md-font-weight: 400;
+
+  --text-label-caps: 12px;
+  --text-label-caps-line-height: 1;
+  --text-label-caps-letter-spacing: 0.1em;
+  --text-label-caps-font-weight: 600;
+
+  --text-mono-metrics: 12px;
+  --text-mono-metrics-line-height: 1;
+  --text-mono-metrics-letter-spacing: 0;
+  --text-mono-metrics-font-weight: 700;
+
+  /* Box shadows */
+  --shadow-inner-glow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-neural-glow: 0 0 20px rgba(168, 85, 247, 0.3);
+  --shadow-neural-glow-lg: 0 0 40px rgba(168, 85, 247, 0.4);
+  --shadow-pro-card: 0 0 40px -10px rgba(168, 85, 247, 0.3);
+
+  /* Background images */
+  --bg-neural-gradient: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+  --bg-pro-gradient-border: linear-gradient(135deg, #A855F7, #6366F1);
+  --bg-glass-gradient: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee-scroll 40s linear infinite;
+  --animate-marquee-reverse: marquee-scroll 40s linear infinite reverse;
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-spin-reverse: spin 40s linear infinite reverse;
+  --animate-pulse-slow: pulse 4s ease-in-out infinite;
+
+  /* Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes marquee-scroll {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+}
+
+/* Geist Font */
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Material Symbols Outlined */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* JetBrains Mono for code */
+.font-mono-metrics {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-family-body-md);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-color: var(--color-neural-purple);
+  ring-offset: 2px;
+  ring-offset-color: var(--color-background);
+}
+
+/* Selection styles */
+::selection {
+  background-color: color-mix(in srgb, var(--color-neural-purple) 30%, white);
+  color: white;
+}
+
+/* ============================================
+   CUSTOM UTILITY CLASSES FROM UI SCREENS
+   ============================================ */
+
+/* Glass morphism variants */
+.glass {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Inner glow effect */
+.inner-glow {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.inner-glow-px {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Neural glow effects */
+.neural-glow {
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.4));
+}
+
+.neural-glow-lg {
+  box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.4);
+}
+
+/* Scrollbar hiding */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #27272A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3F3F46;
+}
+
+/* Neural orb background animations */
+.neural-orb {
+  position: fixed;
+  border-radius: 9999px;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.orb-indigo {
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--color-neural-indigo);
+}
+
+.orb-violet {
+  bottom: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--color-neural-purple);
+}
+
+/* Background animation */
+.bg-animation {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+}
+
+/* Pro gradient border */
+.pro-gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.pro-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #A855F7, #6366F1);
+}
+
+/* Marquee animation */
+.animate-marquee {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+/* Float animation */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* FAQ accordion content */
+.faq-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 0;
+  opacity: 0;
+}
+
+.faq-item.active .faq-content {
+  max-height: 500px;
+  opacity: 1;
+  padding-top: 16px;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-icon {
+  transition: transform 0.3s;
+}
+
+/* Docked nav */
+.docked {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Gradient text */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--color-neural-indigo), var(--color-neural-purple));
+}
+
+/* Container queries - removed @container query due to Tailwind v4 compatibility */
+
+/* Selection disable for UI elements */
+.select-none {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Text balance for headings */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth transitions for interactive elements */
+.transition-smooth {
+  transition: all 0.2s ease-out;
+}
+
+.transition-smooth-slow {
+  transition: all 0.3s ease-out;
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.2s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.25rem);
+}
+
+.hover-lift:active {
+  transform: scale(0.95);
+}
+
+/* Button press effect */
+.active-scale:active {
+  transform: scale(0.95);
+}
+
+/* Glass input */
+.glass-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  color: white;
+  placeholder-color: #71717A;
+  outline: none;
+  transition: all;
+}
+
+.glass-input:focus {
+  --tw-ring-color: color-mix(in srgb, var(--color-neural-purple) 50%, transparent);
+  --tw-ring-offset-width: 0px;
+  border-color: color-mix(in srgb, var(--color-neural-purple) 50%, transparent);
+}
+
+/* Code block styling */
+pre code {
+  font-family: var(--font-family-mono-metrics);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Markdown content */
+.markdown-content {
+  max-width: none;
+}
+
+.markdown-content h1 { font-family: var(--font-family-h1); font-size: var(--text-h1-mobile); }
+@media (min-width: 768px) { .markdown-content h1 { font-size: var(--text-h1); } }
+.markdown-content h2 { font-family: var(--font-family-h2); font-size: var(--text-h2); }
+.markdown-content h3 { font-family: var(--font-family-h3); font-size: var(--text-h3); }
+.markdown-content p { font-family: var(--font-family-body-md); font-size: var(--text-body-md); color: rgba(255, 255, 255, 0.8); }
+.markdown-content code { font-family: var(--font-family-mono-metrics); font-size: 0.875rem; background-color: rgba(255, 255, 255, 0.05); padding: 0.25rem 0.375rem; border-radius: 0.25rem; }
+.markdown-content pre { background-color: rgba(39, 39, 42, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.75rem; padding: 1rem; overflow-x: auto; }
+.markdown-content pre code { background-color: transparent; padding: 0; font-size: 0.875rem; }
+.markdown-content a { color: var(--color-neural-purple); text-decoration-line: underline; text-underline-offset: 2px; }
+.markdown-content a:hover { color: var(--color-neural-indigo); }
+.markdown-content blockquote { border-left: 4px solid color-mix(in srgb, var(--color-neural-purple) 50%, transparent); padding-left: 1rem; font-style: italic; color: rgba(255, 255, 255, 0.6); }
+.markdown-content ul { list-style-type: disc; list-style-position: inside; }
+.markdown-content ol { list-style-type: decimal; list-style-position: inside; }
+
+/* Loading skeleton */
+.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.25rem;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass,
+  .glass-dark,
+  .glass-panel,
+  .glass-card {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .border-subtle {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}

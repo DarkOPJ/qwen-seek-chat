@@ -1,0 +1,365 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Orbital AI | Workspace</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Geist Font Simulation -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Geist';
+            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+
+        body {
+            font-family: 'Geist', 'Inter', sans-serif;
+            background-color: #000000;
+            overflow: hidden;
+            color: #A1A1AA;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-dark {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .inner-glow {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .neural-glow {
+            filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.4));
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+
+        pre code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        /* Unicorn Studio Animation Placeholder Simulation */
+        .bg-animation {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+        }
+    </style>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#e4e2e2",
+                        "on-secondary-container": "#A1A1AA",
+                        "inverse-surface": "#f1f1ef",
+                        "tertiary": "#ffffff",
+                        "neural-rose": "#FB7185",
+                        "accent-emerald": "#10B981",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "neural-purple": "#A855F7",
+                        "inverse-on-surface": "#2f3130",
+                        "on-tertiary-container": "#71717A",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#18181B",
+                        "on-tertiary-fixed-variant": "#A1A1AA",
+                        "primary": "#ffffff",
+                        "on-primary-fixed": "#000000",
+                        "on-surface": "#FFFFFF",
+                        "surface-variant": "#27272A",
+                        "tertiary-container": "#1b1b1b",
+                        "surface-dim": "#09090B",
+                        "border-subtle": "rgba(255, 255, 255, 0.1)",
+                        "secondary": "#A1A1AA",
+                        "primary-container": "#FFFFFF",
+                        "on-secondary": "#000000",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-fixed": "#FFFFFF",
+                        "surface-container-low": "#121212",
+                        "surface": "#000000",
+                        "on-tertiary": "#000000",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "surface-tint": "#A1A1AA",
+                        "primary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-background": "#FFFFFF",
+                        "surface-container-high": "#1C1C1F",
+                        "inverse-primary": "#000000",
+                        "background": "#000000",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "outline-variant": "#3F3F46",
+                        "on-primary-container": "#000000",
+                        "on-surface-variant": "#A1A1AA",
+                        "tertiary-fixed": "#e2e2e2",
+                        "neural-indigo": "#6366F1",
+                        "on-secondary-fixed-variant": "#A1A1AA",
+                        "surface-bright": "#18181B",
+                        "surface-container-highest": "#27272A",
+                        "surface-panel": "#09090B",
+                        "on-primary": "#000000",
+                        "surface-card": "#09090B",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#000000",
+                        "on-error-container": "#93000a",
+                        "outline": "#52525B",
+                        "secondary-container": "#27272A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "32px",
+                        "margin": "32px",
+                        "section-gap-desktop": "180px",
+                        "section-gap-mobile": "80px",
+                        "max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "h1-mobile": ["Geist", "Inter"],
+                        "label-caps": ["Geist", "Inter"],
+                        "body-md": ["Geist", "Inter"],
+                        "h2": ["Geist", "Inter"],
+                        "body-lg": ["Geist", "Inter"],
+                        "h1": ["Geist", "Inter"],
+                        "mono-metrics": ["JetBrains Mono"],
+                        "h3": ["Geist", "Inter"]
+                    },
+                    "fontSize": {
+                        "h1-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h2": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "h1": ["84px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                        "mono-metrics": ["12px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "700"}],
+                        "h3": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface h-screen flex overflow-hidden">
+<!-- Background Atmospheric Layer -->
+<div class="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-animation"></div>
+<!-- Navigation Shell (TopAppBar) -->
+<header class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-3xl border-b border-border-subtle/50 shadow-2xl">
+<div class="flex justify-between items-center h-20 px-margin max-w-max-width mx-auto"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdZLwRSGg35IDhbVR4kWkGKhgNWQnOdLwhPb3_Meq2F_qKAsvIOSQSv9PdP-6n2gJEhhrLNn3HyuNqkZCVT00lBEE8ipfhjtZ1UWxSfovzhpUXIq7OdXFVGap0pARAnxrEVuqqgrhyNeWPgznwpALIpnLJy4W2u8vGklQz_Ynt8Qx-LXkTyjf9-0_RW4mcT56NGYEeLVUTHkCa0QfWRhf5VDSNqK-kR1hTaBq72N2_qzvferHA-KSelKMHneMRFtbfVM" alt="Orbital Logo" class="w-8 h-8 object-cover"><span class="font-h3 text-h3 font-bold text-white">Orbital</span></div><nav class="hidden md:flex gap-8 items-center absolute left-1/2 -translate-x-1/2"><a class="text-on-secondary-container hover:text-white transition-colors font-body-md text-body-md" href="#">Models</a><a class="text-white font-bold border-b-2 border-neural-purple pb-1 font-body-md text-body-md" href="#">Workspace</a><a class="text-on-secondary-container hover:text-white transition-colors font-body-md text-body-md" href="#">Pricing</a><a class="text-on-secondary-container hover:text-white transition-colors font-body-md text-body-md" href="#">Enterprise</a></nav><div class="flex items-center gap-4"><button class="px-6 py-2 bg-white text-black rounded-full font-bold font-body-md text-body-md hover:opacity-90 transition-opacity active:scale-95 duration-200">Get Started</button></div></div>
+</header>
+<!-- Side Navigation Sidebar -->
+<aside class="w-[300px] h-full pt-24 pb-8 px-6 flex flex-col glass z-40 shrink-0">
+<!-- New Chat Button -->
+<button class="w-full flex items-center justify-between p-4 mb-8 bg-neural-purple text-white rounded-xl font-bold shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:opacity-90 transition-all active:scale-95">
+<span class="">New Chat</span>
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<!-- Search -->
+<div class="relative mb-6">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-tertiary-container">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-on-tertiary-container focus:ring-1 focus:ring-neural-purple/50 outline-none" placeholder="Search conversations..." type="text">
+</div>
+<!-- History -->
+<div class="flex-1 overflow-y-auto scrollbar-hide space-y-6">
+<!-- Pinned Section -->
+<div>
+<h4 class="text-label-caps font-label-caps text-on-tertiary-container mb-3 uppercase tracking-widest text-[10px]">Pinned</h4>
+<div class="space-y-1">
+<button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-left group">
+<span class="material-symbols-outlined text-neural-purple">push_pin</span>
+<span class="text-sm font-medium text-white/90 truncate">System Architecture v2</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-left group">
+<span class="material-symbols-outlined text-accent-emerald">push_pin</span>
+<span class="text-sm font-medium text-white/90 truncate">Orbital API Documentation</span>
+</button>
+</div>
+</div>
+<!-- Recent Section -->
+<div>
+<h4 class="text-label-caps font-label-caps text-on-tertiary-container mb-3 uppercase tracking-widest text-[10px]">Recent</h4>
+<div class="space-y-1">
+<button class="w-full flex items-center gap-3 p-3 rounded-lg bg-white/10 border border-white/10 text-left group">
+<span class="material-symbols-outlined text-on-secondary-container">chat_bubble</span>
+<span class="text-sm font-medium text-white truncate">Next.js 14 Server Actions</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-left group">
+<span class="material-symbols-outlined text-on-secondary-container">chat_bubble</span>
+<span class="text-sm font-medium text-white/80 truncate">React Native performance</span>
+</button>
+<button class="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-left group">
+<span class="material-symbols-outlined text-on-secondary-container">chat_bubble</span>
+<span class="text-sm font-medium text-white/80 truncate">Data scrubbing strategies</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom User Section -->
+<div class="mt-auto pt-6 border-t border-white/10 space-y-4">
+
+<div class="flex items-center gap-3 p-2">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-neural-purple to-neural-rose p-[1.5px]">
+<div class="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx_529MuDmhJJ-wqZeiBpJMVil31N_RQH6ciGvCYZBqfR_v2UYOqLibya6m1xmfMw2q9K4z_rmdBBmUbNzVFzUBwdoKpcQSio4yVQEmgQ_jVgpc0MWvx-67vlaRtpm8xPGIPQ7KLNSYPkDhJKFTn5WNpafyc9Yrb6QmD0rySSMkVgUA-qn0M4Si09a_v-8h7WW_gWktflMJFnF_-WLRAYVHRrDCISHlE8lMUaGZ0twz-5Z5-2p_94DXQ">
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Alex Rivera</p>
+
+</div>
+
+</div>
+</div>
+</aside>
+<!-- Main Workspace Area -->
+<main class="flex-1 h-full pt-24 flex flex-col relative z-10 overflow-hidden">
+<!-- Top Toolbar / Model Selector -->
+<div class="h-16 px-8 flex items-center justify-between bg-black/20 backdrop-blur-sm border-b border-white/5">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 p-1 bg-white/5 rounded-full border border-white/10">
+<button class="px-4 py-1.5 bg-white/10 shadow-sm rounded-full text-xs font-bold text-white transition-all">Qwen 2.5</button>
+<button class="px-4 py-1.5 text-on-secondary-container text-xs font-medium hover:text-white transition-all">DeepSeek v3</button>
+</div>
+<div class="h-4 w-[1px] bg-white/10 mx-2"></div>
+<div class="flex items-center gap-2 text-on-tertiary-container">
+<span class="material-symbols-outlined !text-[16px] text-neural-purple">bolt</span>
+<span class="text-xs font-medium">Turbo Mode Active</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-lg hover:bg-white/5 text-on-secondary-container hover:text-white transition-colors">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Chat Canvas -->
+<div class="flex-1 overflow-y-auto scrollbar-hide px-8 pb-32">
+<!-- Welcome State -->
+<div class="max-w-3xl mx-auto mt-24 flex flex-col items-center text-center">
+<img alt="Orbital Logo" class="w-24 h-24 mb-8 neural-glow brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsPeiI26bBI2Lx_GxvwMQzxtLQC4UlU_3lTVhGdh6_t_94NmvCn2FMGDX8z3l8OSMm_oRJUhjk4Ar1Nt4MSv_vWyzuefdSxIyZNGwP8wHSMcdv26BXwlRkkjdiwHR1TMPgkRQQPqPPGHnFsuSG0u0JyGH2pakiKdwx6TmtrBSicqYVai5j1LpOP_1xFTeRFi8oOc49W6Ax0dE4gPg5_fKw4pHhhR6iycfaf-Ck7SKjjMMxg70WjIzvG5VA60tZxRu81xc">
+<h2 class="font-h2 text-h3 md:text-h2 mb-4 text-white">Precision Intelligence.</h2>
+<p class="font-body-lg text-body-lg text-on-secondary-container mb-12 max-w-xl">
+                Design architectures, debug production logic, or orchestrate complex data flows with Orbital’s unified workspace.
+            </p>
+<!-- Prompt Suggestions Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+<button class="p-6 rounded-2xl glass-dark hover:bg-white/[0.08] transition-all text-left group">
+<span class="material-symbols-outlined text-neural-indigo mb-3">code</span>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-neural-indigo transition-colors">Refactor React Component</h4>
+<p class="text-xs text-on-tertiary-container leading-relaxed">Optimize a legacy class component for React 18 hooks and performance.</p>
+</button>
+<button class="p-6 rounded-2xl glass-dark hover:bg-white/[0.08] transition-all text-left group">
+<span class="material-symbols-outlined text-accent-emerald mb-3">schema</span>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-accent-emerald transition-colors">SQL Query Optimization</h4>
+<p class="text-xs text-on-tertiary-container leading-relaxed">Analyze a complex JOIN query for potential indexing improvements.</p>
+</button>
+<button class="p-6 rounded-2xl glass-dark hover:bg-white/[0.08] transition-all text-left group">
+<span class="material-symbols-outlined text-neural-purple mb-3">terminal</span>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-neural-purple transition-colors">CI/CD Pipeline Design</h4>
+<p class="text-xs text-on-tertiary-container leading-relaxed">Create a Github Action workflow for automated testing and staging deployment.</p>
+</button>
+<button class="p-6 rounded-2xl glass-dark hover:bg-white/[0.08] transition-all text-left group">
+<span class="material-symbols-outlined text-neural-rose mb-3">auto_awesome</span>
+<h4 class="font-bold text-sm mb-1 text-white group-hover:text-neural-rose transition-colors">Creative Brand Strategy</h4>
+<p class="text-xs text-on-tertiary-container leading-relaxed">Brainstorm names and visual identity directions for a new AI startup.</p>
+</button>
+</div>
+</div>
+</div>
+<!-- Floating Input Area -->
+<div class="absolute bottom-0 left-0 right-0 p-8 pt-0 pointer-events-none">
+<div class="max-w-4xl mx-auto glass p-2 rounded-[28px] shadow-2xl inner-glow pointer-events-auto border border-white/10 relative overflow-hidden">
+<div class="flex items-end gap-2 p-2">
+
+<div class="flex-1 flex flex-col min-h-[48px] justify-center px-2">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none text-sm leading-6 py-2 text-white placeholder-on-tertiary-container scrollbar-hide" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" placeholder="Type your instruction..." rows="1"></textarea>
+</div>
+<div class="flex items-center gap-1">
+
+<button class="w-12 h-12 flex items-center justify-center bg-neural-purple text-white rounded-full hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Metadata Bar -->
+<div class="flex items-center justify-between px-6 pb-2 pt-1 border-t border-white/5 mt-1">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<div class="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse"></div>
+<span class="text-[10px] font-bold text-on-tertiary-container uppercase tracking-tight">System Ready</span>
+</div>
+
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold text-on-tertiary-container uppercase tracking-widest">Context: 128k Tokens</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Universal Anchor) -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 pointer-events-none md:pointer-events-auto">
+<div class="bg-black/60 backdrop-blur-xl border-t border-white/5 py-4 px-margin w-full bg-black">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-max-width mx-auto gap-4"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeUdDXsldzZaSiNGHVOZ98NZNEGwBCJb2VkK4W_daxNO4smfgRAV6-vbx60-knUF88kwVVDNne5CdWt_OZEPYAK9If_g719M0RS-fuL7hQpXoBu8sW4EutpoOE9r0BNwCKehI97iIYlwZ4BvDkjb8gf1vmj3iTwVmnJ5Q1a0mCtjS8YOv34BOpQHRaNErU5Zhkyq6IDshhD9gm1hisSwXymdjz6M-A1CFSiunt8ljYPoAoeKqa5mugUkMq8RU6SGIFEss" alt="Orbital Logo" class="w-8 h-8 object-cover"><span class="font-h3 text-h3 font-bold text-white">Orbital</span></div><span class="font-label-caps text-label-caps text-white/50 uppercase tracking-widest">© 2026 ORBITAL AI. ALL RIGHTS RESERVED.</span></div>
+</div>
+</footer>
+<script>
+    // Micro-interaction for the model selector
+    const modelBtns = document.querySelectorAll('.model-btn');
+    modelBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modelBtns.forEach(b => {
+                b.classList.remove('bg-white/10', 'shadow-sm', 'font-bold', 'text-white');
+                b.classList.add('text-on-secondary-container', 'font-medium');
+            });
+            btn.classList.add('bg-white/10', 'shadow-sm', 'font-bold', 'text-white');
+            btn.classList.remove('text-on-secondary-container', 'font-medium');
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+</body></html>

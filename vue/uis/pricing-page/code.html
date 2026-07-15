@@ -1,0 +1,410 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Orbital - Pricing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#eeeeec",
+                      "secondary-container": "#e1dfdf",
+                      "on-surface-variant": "#4c4546",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1a1c1b",
+                      "outline-variant": "#cfc4c5",
+                      "surface-bright": "#f9f9f7",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#e4e2e2",
+                      "on-primary": "#ffffff",
+                      "accent-emerald": "#10B981",
+                      "background": "#f9f9f7",
+                      "surface-container-lowest": "#ffffff",
+                      "neural-rose": "#FB7185",
+                      "on-tertiary-container": "#848484",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "neural-indigo": "#6366F1",
+                      "on-primary-container": "#848484",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary-container": "#626262",
+                      "on-background": "#1a1c1b",
+                      "on-secondary-fixed-variant": "#464747",
+                      "secondary": "#5e5e5e",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#1b1b1b",
+                      "inverse-primary": "#c6c6c6",
+                      "tertiary": "#000000",
+                      "outline": "#7e7576",
+                      "surface-variant": "#e2e3e1",
+                      "primary": "#000000",
+                      "on-primary-fixed-variant": "#474747",
+                      "secondary-fixed-dim": "#c7c6c6",
+                      "inverse-surface": "#2f3130",
+                      "surface-container-high": "#e8e8e6",
+                      "surface-container-highest": "#e2e3e1",
+                      "tertiary-fixed": "#e2e2e2",
+                      "primary-container": "#1b1b1b",
+                      "surface": "#f9f9f7",
+                      "error": "#ba1a1a",
+                      "border-subtle": "#E7E7E4",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-card": "#FCFCFB",
+                      "inverse-on-surface": "#f1f1ef",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#dadad8",
+                      "surface-panel": "#F3F2EF",
+                      "surface-container-low": "#f4f4f2",
+                      "neural-purple": "#A855F7",
+                      "on-secondary-fixed": "#1b1c1c",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-tint": "#5e5e5e",
+                      "on-primary-fixed": "#1b1b1b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap-mobile": "80px",
+                      "unit": "8px",
+                      "gutter": "32px",
+                      "section-gap-desktop": "180px",
+                      "margin": "32px",
+                      "max-width": "1280px"
+              },
+              "fontFamily": {
+                      "h1-mobile": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Geist"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "h2": [
+                              "Geist"
+                      ],
+                      "h1": [
+                              "Geist"
+                      ],
+                      "mono-metrics": [
+                              "JetBrains Mono"
+                      ],
+                      "h3": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "h1-mobile": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h2": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1": [
+                              "84px",
+                              {
+                                      "lineHeight": "1.05",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "mono-metrics": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "h3": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          body {
+              font-family: 'Geist', sans-serif;
+              background-color: #000000;
+              color: #ffffff;
+          }
+          
+          /* Using glassmorphism utility classes based on the style guidance for floating levels */
+          .glass-panel {
+              background-color: rgba(255, 255, 255, 0.05); /* Adjusted for dark background */
+              backdrop-filter: blur(24px);
+              -webkit-backdrop-filter: blur(24px);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+          }
+          
+          .pro-gradient-border {
+              position: relative;
+              border: 1px solid transparent;
+              background-clip: padding-box;
+          }
+          .pro-gradient-border::before {
+              content: "";
+              position: absolute;
+              top: 0; right: 0; bottom: 0; left: 0;
+              z-index: -1;
+              margin: -1px;
+              border-radius: inherit;
+              background: linear-gradient(135deg, theme('colors.neural-purple'), theme('colors.neural-indigo'));
+          }
+
+          .faq-content {
+              transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+              max-height: 0;
+              opacity: 0;
+              overflow: hidden;
+          }
+          
+          .faq-item.active .faq-content {
+              max-height: 200px; /* arbitrary max height for smooth transition */
+              opacity: 1;
+              padding-top: 16px;
+          }
+          
+          .faq-item.active .faq-icon {
+              transform: rotate(180deg);
+          }
+      </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center h-16 px-margin max-w-max-width mx-auto w-full bg-black/25 backdrop-blur-3xl docked full-width top-0 sticky border-b border-white/10 z-50">
+<div class="flex items-center gap-2 font-h3 text-h3 font-semibold tracking-tight text-white"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2XcSlkcW3v5eY_tKzkq8zkE_ysGFDP9TlUtDDmen7EMBLUmHaAXDxC_xlukFntL9PjzKDzyF14fh5fKAoiXpMY8_qRzbcLcZ_stHT9IheOdZYrU2-A1Me8KOnqAx_N2dg2i9iI-yv5nGF_BBhykhIsKwafhZ8jGv8Ahg6uqqKTDbEHSe4qMTyiR8IqgpE795dzLKxavFPc3-ZhzdW9QpdGtZXcAvDe6O8wCZV9AUSPGLDithQoB9I_g5KmOxMHHqGQGM" alt="Orbital Logo" class="w-8 h-8 object-contain"><span class="">Orbital</span></div>
+<div class="hidden md:flex gap-8 items-center font-body-md text-body-md">
+<a class="text-white/70 hover:text-white transition-colors" href="#">Models</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#">Workspace</a>
+<a class="text-white font-semibold border-b-2 border-white pb-1 active:scale-95 transition-transform duration-200" href="#">Pricing</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#">Enterprise</a>
+</div>
+<button class="bg-white text-black px-6 py-2 rounded-full font-label-caps text-label-caps hover:opacity-80 transition-opacity active:scale-95 duration-200">
+            Get Started
+        </button>
+</nav>
+<main class="flex-grow flex flex-col items-center w-full max-w-max-width mx-auto px-margin pt-[120px] pb-section-gap-desktop">
+<!-- Hero Section -->
+<section class="text-center w-full max-w-3xl mb-section-gap-mobile md:mb-[120px]">
+<h1 class="font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 mb-6 text-white tracking-tight">
+                Pricing built for scale.
+            </h1>
+<p class="font-body-lg text-body-lg text-white/70 max-w-2xl mx-auto">
+                Transparent, flexible plans designed to support independent researchers and scale seamlessly to enterprise production environments.
+            </p>
+</section>
+<!-- Pricing Grid -->
+<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-section-gap-desktop relative z-10">
+<!-- Starter -->
+<div class="glass-panel rounded-xl p-8 flex flex-col">
+<div class="mb-8">
+<h3 class="font-h3 text-h3 mb-2">Starter</h3>
+<div class="flex items-baseline gap-1 mb-4">
+<span class="font-h2 text-h2">$0</span>
+<span class="font-body-md text-body-md text-white/50">/mo</span>
+</div>
+<p class="font-body-md text-body-md text-white/70">Perfect for prototyping and exploration.</p>
+</div>
+<button class="w-full py-3 px-4 rounded-full border border-white/20 font-label-caps text-label-caps hover:bg-white/10 transition-colors mb-8">
+                    Start Free
+                </button>
+<div class="flex-grow">
+<ul class="space-y-4 font-body-md text-body-md text-white/80">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            100 messages/mo
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            Standard models access
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            Community support
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Pro -->
+<div class="glass-panel rounded-xl p-8 flex flex-col pro-gradient-border relative transform md:-translate-y-4 shadow-2xl shadow-neural-purple/20">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-neural-purple text-white px-3 py-1 rounded-full font-label-caps text-[10px] tracking-wider whitespace-nowrap">
+                    RECOMMENDED
+                </div>
+<div class="mb-8">
+<h3 class="font-h3 text-h3 mb-2">Pro</h3>
+<div class="flex items-baseline gap-1 mb-4">
+<span class="font-h2 text-h2">$20</span>
+<span class="font-body-md text-body-md text-white/50">/mo</span>
+</div>
+<p class="font-body-md text-body-md text-white/70">For professionals requiring high-performance models.</p>
+</div>
+<button class="w-full py-3 px-4 rounded-full bg-white text-black font-label-caps text-label-caps hover:bg-white/90 transition-colors mb-8">
+                    Upgrade to Pro
+                </button>
+<div class="flex-grow">
+<ul class="space-y-4 font-body-md text-body-md text-white/90">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neural-purple text-[20px]">check</span>
+                            Unlimited messages
+                        </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-neural-purple text-[20px] mt-1">check</span>
+<div class="">
+                                Priority access to high-performance models
+                                <div class="flex gap-2 mt-2 items-center">
+<div class="bg-white/10 rounded-md p-1 border border-white/5">
+<img alt="Qwen Model" class="w-6 h-6 object-contain rounded-sm" data-alt="A highly detailed 50-100 word prompt describing a futuristic, glowing neural network node representing an AI language model icon, set against a dark void with sharp neon accents, emphasizing precision and computational power in a premium dark-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOVC1IzU0D5OtePvol_dJfh21bzKSQEoOZEdsnBna3QsWL6zCFX8tY1DMMboIz2p9tQtR_ZzynB5JuraVdqwF6hN2husm3WYaZYL8Fr91F5Xe2AN9eGEQ1dnkpgUMcI0xK-GkrR64r96klfLy-iXXzVGzE1ErPezl6n8GyEqR7xgLTWA-8IHkO11ocbWVpDuECZIHuLQQNZtUwqBI8IYmxWfjHz6LndiTE5oL7qxnMt4YeHyvU3nykTw20LMlK5l-PuvQ">
+</div>
+<div class="bg-white/10 rounded-md p-1 border border-white/5">
+<img alt="DeepSeek Model" class="w-6 h-6 object-contain rounded-sm" data-alt="A highly detailed 50-100 word prompt describing an intricate, crystalline digital structure representing an advanced AI model icon, glowing with soft emerald and indigo light on a pure black background, reflecting a sophisticated, engineered corporate technology vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo2IyPICTI53qWOaNTB2Hv0YOHjJw2ktEsHbxvbCmMtCXeCIm2xyFOyHX9G4gRaLOIwCVF1e1lmZ6UNj3oWV852e-xCDzxBxf5CQpGdx7R_S0lMTHvULnSJXysiZkVuv0dk3sdmhfYUov6C6H8-Z0z7DWd-ZE3Sq_byVPU_Wge8aC86cXwwkhErYQTxcY0oHBwRWCKZ-j1KFjpHHofyl_2PU0BFb3GnxYxjt8zZH1u6UhH1BErFs0DMMpwNnaG_GeNtiA">
+</div>
+</div>
+</div>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neural-purple text-[20px]">check</span>
+                            128k context window
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-neural-purple text-[20px]">check</span>
+                            Email support
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Enterprise -->
+<div class="glass-panel rounded-xl p-8 flex flex-col">
+<div class="mb-8">
+<h3 class="font-h3 text-h3 mb-2">Enterprise</h3>
+<div class="flex items-baseline gap-1 mb-4">
+<span class="font-h2 text-h2 text-[48px]">Custom</span>
+</div>
+<p class="font-body-md text-body-md text-white/70">Custom tailored solutions for large organizations.</p>
+</div>
+<button class="w-full py-3 px-4 rounded-full border border-white/20 font-label-caps text-label-caps hover:bg-white/10 transition-colors mb-8">
+                    Contact Sales
+                </button>
+<div class="flex-grow">
+<ul class="space-y-4 font-body-md text-body-md text-white/80">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            Dedicated infrastructure
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            Custom model fine-tuning
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            RBAC &amp; SSO
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-white/50 text-[20px]">check</span>
+                            24/7 dedicated support
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="w-full max-w-3xl">
+<h2 class="font-h2 text-h2 mb-12 text-center">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<div class="faq-item glass-panel rounded-lg px-6 py-4 cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold">How does billing work for the Pro tier?</h4>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</div>
+<div class="faq-content">
+<p class="font-body-md text-body-md text-white/70">
+                            The Pro tier is billed monthly at $20/month. You can cancel at any time, and you'll retain access until the end of your current billing cycle. There are no hidden fees or usage limits for standard chat interactions.
+                        </p>
+</div>
+</div>
+<div class="faq-item glass-panel rounded-lg px-6 py-4 cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold">Can I switch between different models?</h4>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</div>
+<div class="faq-content">
+<p class="font-body-md text-body-md text-white/70">
+                            Yes, Pro users have seamless access to switch between our highest-performing models, including Qwen 2.5 and DeepSeek v3, directly within the workspace interface without any additional configuration.
+                        </p>
+</div>
+</div>
+<div class="faq-item glass-panel rounded-lg px-6 py-4 cursor-pointer" onclick="this.classList.toggle('active')">
+<div class="flex justify-between items-center">
+<h4 class="font-body-lg text-body-lg font-semibold">What security standards do Enterprise plans meet?</h4>
+<span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+</div>
+<div class="faq-content">
+<p class="font-body-md text-body-md text-white/70">
+                            Enterprise plans feature dedicated, isolated infrastructure ensuring zero data crossover. We support SAML SSO, Role-Based Access Control (RBAC), and are compliant with SOC 2 Type II standards.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col md:flex-row justify-between items-center py-gutter px-margin max-w-max-width mx-auto w-full border-t border-white/10 bg-black text-white/50"><div class="flex items-center gap-2 font-h3 text-h3 font-bold text-white"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRyEMGR56BXu4-X5s2vPwWEz2BLixzy-vzeIPciQ33r5roFpZ88eG2mD-8YlFJEXqVMhNs-9lGbZjgoWidYWZ8ddq-svg3tkMyqScJFCanvOFUTEujmbxSHWWLTMc7sxRh4ErVv0cmgw1TftKku4d8famGVquMrG3fYQ93yb1nxNreZzl9v6OtYmRaBDriYhhzv_7O38OZd0YemJJEpMME2SkixscdDAIUh0NrCUhZTnHbsyWOdMxYKG19jSUWjKFMTNU" alt="Orbital Logo" class="w-8 h-8 object-contain"><span class="">ORBITAL</span></div><div class="font-label-caps text-label-caps tracking-wider text-white/50">© 2026 ORBITAL AI. ALL RIGHTS RESERVED</div></footer>
+
+
+</body></html>

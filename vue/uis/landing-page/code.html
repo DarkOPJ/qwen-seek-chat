@@ -1,0 +1,411 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Orbital | Intelligence, evolved.</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-secondary-container": "#626262",
+                    "inverse-surface": "#2f3130",
+                    "tertiary": "#000000",
+                    "neural-rose": "#FB7185",
+                    "accent-emerald": "#10B981",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "neural-purple": "#A855F7",
+                    "inverse-on-surface": "#f1f1ef",
+                    "on-tertiary-container": "#848484",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eeeeec",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "primary": "#000000",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-surface": "#1a1c1b",
+                    "surface-variant": "#e2e3e1",
+                    "tertiary-container": "#1b1b1b",
+                    "surface-dim": "#dadad8",
+                    "border-subtle": "#E7E7E4",
+                    "secondary": "#5e5e5e",
+                    "primary-container": "#1b1b1b",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "surface-container-low": "#f4f4f2",
+                    "surface": "#f9f9f7",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "surface-tint": "#5e5e5e",
+                    "primary-fixed": "#e2e2e2",
+                    "secondary-fixed": "#e4e2e2",
+                    "on-background": "#1a1c1b",
+                    "surface-container-high": "#e8e8e6",
+                    "inverse-primary": "#c6c6c6",
+                    "background": "#f9f9f7",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "outline-variant": "#cfc4c5",
+                    "on-primary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "tertiary-fixed": "#e2e2e2",
+                    "neural-indigo": "#6366F1",
+                    "on-secondary-fixed-variant": "#464747",
+                    "surface-bright": "#f9f9f7",
+                    "surface-container-highest": "#e2e3e1",
+                    "surface-panel": "#F3F2EF",
+                    "on-primary": "#ffffff",
+                    "surface-card": "#FCFCFB",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-error-container": "#93000a",
+                    "outline": "#7e7576",
+                    "secondary-container": "#e1dfdf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "32px",
+                    "margin": "32px",
+                    "section-gap-desktop": "180px",
+                    "section-gap-mobile": "80px",
+                    "max-width": "1280px"
+            },
+            "fontFamily": {
+                    "h1-mobile": ["Geist", "sans-serif"],
+                    "label-caps": ["Geist", "sans-serif"],
+                    "body-md": ["Geist", "sans-serif"],
+                    "h2": ["Geist", "sans-serif"],
+                    "body-lg": ["Geist", "sans-serif"],
+                    "h1": ["Geist", "sans-serif"],
+                    "mono-metrics": ["JetBrains Mono", "monospace"],
+                    "h3": ["Geist", "sans-serif"]
+            },
+            "fontSize": {
+                    "h1-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h2": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "h1": ["84px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                    "mono-metrics": ["12px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "700"}],
+                    "h3": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: white;
+            font-family: 'Geist', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+        .neural-orb {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        .orb-indigo { top: -20%; left: -10%; background: #6366F1; }
+        .orb-violet { bottom: -20%; right: -10%; background: #A855F7; }
+        
+        .coming-soon-grayscale {
+            filter: grayscale(1) opacity(0.4);
+            transition: all 0.5s ease;
+        }
+        .coming-soon-grayscale:hover {
+            filter: grayscale(0.5) opacity(0.7);
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #444; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Background Layer -->
+<div class="fixed inset-0 z-0">
+<div class="neural-orb orb-indigo"></div>
+<div class="neural-orb orb-violet"></div>
+<!-- Unicorn Studio Placeholder Tag for Animation -->
+
+</div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-black/25 backdrop-blur-3xl border-b border-white/10 h-20 shadow-sm">
+<div class="flex justify-between items-center h-full px-margin max-w-max-width mx-auto"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKWqQukoUhR_rYJAhuF77hvB7KU72sNSJBfWHmEzAmcTfyPaTxFRbcpk36mWfBwZKs7NVOmtooO3SwoVhunGHqkOW4xn_I-ZHOQ3eyaDfNYB6oSeGTIxaCDqIoAxleqCYHYHYIgHfzh5bQ8JsvsxMccqD6YjNEUkni5GP7RLJ9rHoX44K_PY8VgOIysT3eDuRUho5NeCDjz1r89wzR5g9rOpw1T-W9dAdwqJbXYywTPcIBIAgq_iRwjoBaW-DGQ7tUR1s" alt="Orbital Logo" class="w-8 h-8 object-contain">
+<span class="font-h3 text-h3 font-bold text-white">Orbital</span>
+</div>
+<div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+<a class="text-white font-bold border-b-2 border-white pb-1 font-body-md text-body-md" href="#">Models</a>
+<a class="text-on-tertiary-container hover:text-white transition-colors font-body-md text-body-md" href="#">Workspace</a>
+<a class="text-on-tertiary-container hover:text-white transition-colors font-body-md text-body-md" href="#">Pricing</a>
+<a class="text-on-tertiary-container hover:text-white transition-colors font-body-md text-body-md" href="#">Enterprise</a>
+</div>
+<button class="bg-white text-black px-6 py-2 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200">
+Get Started
+</button></div>
+</nav>
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center px-margin max-w-max-width mx-auto pt-20">
+<div class="grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 opacity-100 translate-y-0">
+<div class="space-y-8">
+
+<h1 class="font-h1 text-h1 text-white leading-tight">
+                        Intelligence, <br>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-neural-indigo to-neural-purple">evolved.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-tertiary-container max-w-lg">
+                        Access the world's most advanced reasoning engines in a single, unified workspace designed for precision and performance.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-white text-black px-8 py-4 rounded-full font-label-caps text-label-caps font-bold shadow-xl shadow-white/5 hover:bg-neutral-200 transition-all">
+                            Start Building
+                        </button>
+
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-r from-neural-indigo/20 to-neural-purple/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all"></div>
+<div class="glass-panel rounded-3xl overflow-hidden animate-float">
+<img class="w-full h-auto" data-alt="A sophisticated UI mockup of the Orbital Workspace software on a high-end monitor. The interface is dark-themed with glassmorphic elements, showing real-time neural data visualizations in shades of indigo and violet. The layout is clean and minimal, featuring code editors, chat interfaces, and complex reasoning graphs. Soft ambient lighting illuminates the desk setup, creating a professional and futuristic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAwei_kTTUhmwdSKkLbVkJwOhw4LxeiwQ2EQCBi0_-WapHJPDnhNVuNN61Ije8DUv4OvVv0Vp5GDEMhbPKnUJuxTkL78kvDn-1dE-kSoLhSAOJnxVcGh5_lPVJ9a-NZq8AQG-xhk-9VhT1db_O_-_sMBk1UTG6NrMYR6UNJqsxD4mDYE0x7xXLY4x5cvJxm6qbs3lrKL5WrLtHCwy6pLMlgvL_VovnF8J83mXfLFISsWVm7yqekkT16A">
+</div>
+<!-- Decorative Floating UI Widget -->
+<div class="absolute -bottom-6 -left-6 glass-panel p-6 rounded-2xl hidden md:block" style="--mouse-x: 2.5px; --mouse-y: 63.75px;">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-accent-emerald">verified</span>
+<span class="font-mono-metrics">MODEL_SYNC_COMPLETE</span>
+</div>
+<div class="h-1 w-32 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full w-3/4 bg-accent-emerald"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Model Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-margin max-w-max-width mx-auto">
+<div class="text-center mb-24 transition-all duration-1000 opacity-100 translate-y-0">
+<h2 class="font-h2 text-h2 mb-6">Engineered for Choice</h2>
+<p class="font-body-lg text-body-lg text-on-tertiary-container max-w-2xl mx-auto">
+                    Switch between top-tier foundation models instantly. No setup, no latency, just pure intelligence.
+                </p>
+</div>
+<!-- Active Models -->
+<div class="grid md:grid-cols-2 gap-8 mb-16 transition-all duration-1000 opacity-100 translate-y-0">
+<!-- DeepSeek -->
+<div class="glass-panel p-8 rounded-3xl group cursor-pointer hover:border-neural-indigo/50 transition-all">
+<div class="flex justify-between items-start mb-12">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-black/40 p-2 flex items-center justify-center">
+<img alt="DeepSeek" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxOng3Unqec9yx1tw5dVoZsStk7BlcSEoZ7O4-hpao5ey0KyKfkijCaabr0eYADy58aPUW642eDO5UHZ7ytosuwvCZ0MqBo22yOCBrwztcFQkUeHoac34VW74t8mSg0gOc_InF-fUBW6K44JpwlAoHRwf-whQIA73H7WLfKXeZ5q0q0BRfNZ6vIgf3TIMopG7ZU7sRWuXl1hDXlm_XEQOjwX0D92kbDEmkjPnz1FRKDC8NhBm8CJKmiMNWKxD-PSrYUt0">
+</div>
+<span class="px-4 py-1 rounded-full bg-accent-emerald/10 text-accent-emerald font-mono-metrics text-xs">ACTIVE</span>
+</div>
+<h3 class="font-h3 text-h3 mb-2">DeepSeek-V3</h3>
+<p class="font-body-md text-body-md text-on-tertiary-container mb-6">Unrivaled efficiency in code generation and complex mathematical reasoning.</p>
+<div class="flex items-center gap-2 text-neural-indigo font-label-caps text-label-caps">
+                        Explore capabilities <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Qwen -->
+<div class="glass-panel p-8 rounded-3xl group cursor-pointer hover:border-neural-purple/50 transition-all">
+<div class="flex justify-between items-start mb-12">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-black/40 p-2 flex items-center justify-center">
+<img alt="Qwen" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-osc6DVajNF_5u5o_K-S-tEgckR7yrYRTLIxegKEMTf4WHbOSm4ce3QiVZ5sicBh5-_ceaISQJkQArZmYgdUrmadkuzGAAltBccrN9iXn1XUBakyZ6VPpOt_v4bjzLD_bEXntEj6ktqo4rz8-ttoNH1RkCaT5Ic-xBOy6tribzWBYIX4cM9tgQN86-cbRF4lTkMWZVmqcrwxmc-Ff6OMjMtNJP8ZmHRhNmuECo3BxBhz1cnbCau3gzgUpwAsmyszCF7k">
+</div>
+<span class="px-4 py-1 rounded-full bg-accent-emerald/10 text-accent-emerald font-mono-metrics text-xs">ACTIVE</span>
+</div>
+<h3 class="font-h3 text-h3 mb-2">Qwen-2.5</h3>
+<p class="font-body-md text-body-md text-on-tertiary-container mb-6">State-of-the-art linguistic versatility with extreme context window support.</p>
+<div class="flex items-center gap-2 text-neural-purple font-label-caps text-label-caps">
+                        Explore capabilities <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Coming Soon Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 transition-all duration-1000 opacity-100 translate-y-0">
+<!-- Mistral -->
+<div class="glass-panel p-6 rounded-2xl text-center flex flex-col items-center group cursor-not-allowed" style="--mouse-x: 149px; --mouse-y: 123.609375px;">
+<img alt="Mistral" class="w-12 h-12 mb-4 object-contain opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiN0yz_scGlPfGq74gzO4_aUUajCHL0Z5BmWhu_homYKcsw9D1-NYfvo8ikoPcPn0fUgGfZoXC1QyGJB64_sWP30tgvVEemjKXV8Wo2shcN_vT7v8Q4H8V6Bb9NbNAiXfpm1lDVkI8siB6lwscUv-pU0aUULIvP-SVB6FimddiKQ0PdhUmRQYcPn_ftLETbvVu-nxtGeljUIYhOZxfDp_-iLvz9A_5mBARtRnmaEHjsFTnpVHTGKidh264_rIMPP8XbFY">
+<span class="font-mono-metrics text-[10px] text-white/40 mb-1">MISTRAL</span>
+<span class="font-label-caps text-[10px] text-on-tertiary-container">COMING SOON</span>
+</div>
+<!-- Gemma -->
+<div class="glass-panel p-6 rounded-2xl text-center flex flex-col items-center group cursor-not-allowed" style="--mouse-x: 5.5px; --mouse-y: 125.609375px;">
+<img alt="Gemma" class="w-12 h-12 mb-4 object-contain opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1_YS_D0GViILgQqX6s58R5BORfsBRSmvZ66uZh3rh56IMMtFRQYSuBYZI92FZEHjK4sxTJxFhUCnbMdFy_ioo-jyk-acmWnzwGZHta8m2WFwtFvFMmm57IBA6T-oeD7HYIkjFx46UgDvL2AdiqmCCXPiRtpezpnEcRuRbl47F2IGVQFfignX3Hsk6MJ7EaiOSttMcpFw7OY0N7LrSTS6eaB5E6-68fHkZsXm_cRgqMof1OxjdmWg2fD2sWjfEwzYUglw">
+<span class="font-mono-metrics text-[10px] text-white/40 mb-1">GEMMA</span>
+<span class="font-label-caps text-[10px] text-on-tertiary-container">COMING SOON</span>
+</div>
+<!-- GPT-OSS -->
+<div class="glass-panel p-6 rounded-2xl text-center flex flex-col items-center group cursor-not-allowed" style="--mouse-x: 5px; --mouse-y: 77.609375px;">
+<img alt="GPT-OSS" class="w-12 h-12 mb-4 object-contain opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8_ehbY9cYSOf8ECXJGECf34SmwfwpxJFnuFhYn84_yTpFCAVPlJVA_dlAOi6FGb6n-RaMZ7QhSUgthnsG3TYwidP0r5x4W7kbPjVALcFTAXpZ9QeXE8yrXJ4sfHoqSmaUz53-6HKDXYtdkK5gRLchQQcfYr534QT1Rg3yppO7Xk__90j7afFFg5OJ8_F3HheYN2j8GBopLEHAVhGvMtpzCiFaI87Y9t70mrq5irau_Lab0vwgJIx3_9SlEagzvAcExXA">
+<span class="font-mono-metrics text-[10px] text-white/40 mb-1">GPT-OSS</span>
+<span class="font-label-caps text-[10px] text-on-tertiary-container">COMING SOON</span>
+</div>
+<!-- GLM -->
+<div class="glass-panel p-6 rounded-2xl text-center flex flex-col items-center group cursor-not-allowed" style="--mouse-x: 110.5px; --mouse-y: 146.609375px;">
+<img alt="GLM" class="w-12 h-12 mb-4 object-contain opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf4MHvHR3Nv1rWGgZnY-vF8899xc-32qjfJ026z2oK6DHfsICRE7Cd7fifc0WSuR26yqJ_yYQysmNaF6sOuOuTC_1sD_NjPe1__nHpel-HW6_cZalVVMzFa6VDi3biRqODwPl4BttagbXJHaZxUwgYRKvT7EwtNBfpt5cTrT8NvsQD31NVFFDF4BVG_U2Yj3s7A7Yp17LI2e2Yjg8ITSHRF-mehWf5H11UDSpQwnA88xPlqTGGcTpmizCwQGegahKnuZk">
+<span class="font-mono-metrics text-[10px] text-white/40 mb-1">GLM</span>
+<span class="font-label-caps text-[10px] text-on-tertiary-container">COMING SOON</span>
+</div>
+<!-- Kimi -->
+<div class="glass-panel p-6 rounded-2xl text-center flex flex-col items-center group cursor-not-allowed" style="--mouse-x: 62px; --mouse-y: 62.609375px;">
+<img alt="Kimi" class="w-12 h-12 mb-4 object-contain opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjun57UpzCYOhyQ4x_N6y3LS6bxZDsWnz2E-eKsqZ3gn6auVr2CjqF7Hcr-CF_kU2lQfGYYIjHP1KS7zr8ngZZT6-QSj0E1yBx0jrhX2jW5pzo2HHd2sBvbPVZd7ArS51BuMfqVGK1gmGWrio2RElPgBXNUFXc_IWXrQh71aW_pjNe6b14h6-ip1d8_yHcwOSjj-CtkdYG3b7fglhsDRAjrnxokCbt4PCvYrsxstCbzqe5WBkT9uoXeIgTGokAysqzfFs">
+<span class="font-mono-metrics text-[10px] text-white/40 mb-1">KIMI</span>
+<span class="font-label-caps text-[10px] text-on-tertiary-container">COMING SOON</span>
+</div>
+<!-- MiniMax -->
+<div class="glass-panel p-6 rounded-2xl text-center flex flex-col items-center group cursor-not-allowed" style="--mouse-x: 32.5px; --mouse-y: 61.609375px;">
+<img alt="MiniMax" class="w-12 h-12 mb-4 object-contain opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKGhySp1uYnwg9fwq3VlXy-USB7ttjCDh4PLD3HJBVMP0Rv5-S8b3W7j6BA-5xYot9VNCgSwRilq3ZXNbyM-g689Xca83_uB_CoOCiYgieevuoYasvz3CaXULoEVw8ZGnm9lk5hi7QauRKuHytDyxVIU1joyGDA4wd73gMsRlmVa0DZMwtSEL3VdUPrky-br2jhUCUVvzBc_u_8OtVquLvqMBsNPrEDypc4CIFFIYVapNKoXX1lzFiYhW02BohhlzEuyU">
+<span class="font-mono-metrics text-[10px] text-white/40 mb-1">MINIMAX</span>
+<span class="font-label-caps text-[10px] text-on-tertiary-container">COMING SOON</span>
+</div>
+</div>
+</section>
+<!-- Feature Grid Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop bg-black relative overflow-hidden">
+<div class="px-margin max-w-max-width mx-auto transition-all duration-1000 opacity-100 translate-y-0">
+<div class="mb-20">
+<h2 class="font-h3 text-h3 mb-4 text-white">Uncompromising Precision</h2>
+<p class="text-white/70 font-body-md max-w-lg">Advanced tooling for the most demanding technical workloads.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all">
+<div class="w-12 h-12 rounded-full bg-neural-indigo/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-neural-indigo">psychology</span>
+</div>
+<h4 class="font-h3 text-xl mb-4 text-white">Advanced Reasoning</h4>
+<p class="font-body-md text-body-md text-white/60">Multi-step cognitive chains that solve complex problems with unprecedented accuracy.</p>
+</div>
+<!-- Feature 2 -->
+<div class="glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all">
+<div class="w-12 h-12 rounded-full bg-neural-purple/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-neural-purple">dynamic_feed</span>
+</div>
+<h4 class="font-h3 text-xl mb-4 text-white">Real-time Synthesis</h4>
+<p class="font-body-md text-body-md text-white/60">Instant integration of live data streams directly into your AI context window.</p>
+</div>
+<!-- Feature 3 -->
+<div class="glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all">
+<div class="w-12 h-12 rounded-full bg-accent-emerald/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-accent-emerald">security</span>
+</div>
+<h4 class="font-h3 text-xl mb-4 text-white">Enterprise Security</h4>
+<p class="font-body-md text-body-md text-white/60">End-to-end encryption with zero-retention policies for your sensitive IP.</p>
+</div>
+<!-- Feature 4 -->
+<div class="glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all">
+<div class="w-12 h-12 rounded-full bg-neural-rose/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-neural-rose">auto_awesome</span>
+</div>
+<h4 class="font-h3 text-xl mb-4 text-white">Neural Tuning</h4>
+<p class="font-body-md text-body-md text-white/60">Fine-tune model personality and output constraints on the fly with orbital sliders.</p>
+</div>
+<!-- Feature 5 -->
+<div class="glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all">
+<div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-white">api</span>
+</div>
+<h4 class="font-h3 text-xl mb-4 text-white">Native SDKs</h4>
+<p class="font-body-md text-body-md text-white/60">Deeply typed integrations for TypeScript, Python, and Rust workflows.</p>
+</div>
+<!-- Feature 6 -->
+<div class="glass-panel p-8 rounded-3xl hover:bg-white/5 transition-all">
+<div class="w-12 h-12 rounded-full bg-orange-400/20 flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-orange-400">speed</span>
+</div>
+<h4 class="font-h3 text-xl mb-4 text-white">Global Edge</h4>
+<p class="font-body-md text-body-md text-white/60">Sub-100ms latency globally powered by our distributed orbital network nodes.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+
+<!-- Footer -->
+<footer class="w-full py-section-gap-mobile md:py-section-gap-desktop bg-black border-t border-white/10 text-white">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin max-w-max-width mx-auto gap-8"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc4KE7RUJ26G2rTRbxEyz6cCG7l9Rks0TbUllHjFGNYt6txRKIyIayPfrKsuW9_UPu4uF8Qi5W1dUII6NWfA_neH53kb7cPpjk6vrcXjbdHJjqzcMKl_eoT4eYJ3tof20vTZkgDEB1kJD9croLwFnk_kNK2-mgcLYy396UWsU8SKf6mgoOjjpHLTyk6rXEixYgx92XMwK8eLQP3a29t33lKZRUaqGYx42xz1Z6n7BJ2F8Hi5rrBRBgxUcAkX4iVv-qfjQ" alt="Orbital Logo" class="w-8 h-8 object-contain">
+<span class="font-h3 text-h3 text-white font-bold">Orbital</span>
+</div>
+<div class="flex items-center">
+<p class="font-label-caps text-label-caps text-on-tertiary-container uppercase">© 2026 ORBITAL AI. ALL RIGHTS RESERVED</p>
+</div></div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for glass panels
+        document.querySelectorAll('.glass-panel').forEach(panel => {
+            panel.addEventListener('mousemove', (e) => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                panel.style.setProperty('--mouse-x', `${x}px`);
+                panel.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple scroll reveal
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
