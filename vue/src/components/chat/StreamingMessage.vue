@@ -1,35 +1,45 @@
 <template>
-  <div class="flex gap-3">
-    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-tr from-neural-indigo to-neural-purple flex items-center justify-center">
-      <span class="material-symbols-outlined text-sm">smart_toy</span>
+  <div>
+    <button
+      v-if="thinking"
+      class="flex items-center gap-1.5 text-xs text-on-tertiary-container/60 hover:text-white transition-colors mb-2"
+      @click="thinkingOpen = !thinkingOpen"
+    >
+      <span class="material-symbols-outlined !text-[14px] transition-transform duration-200" :class="thinkingOpen ? 'rotate-90' : ''">chevron_right</span>
+      <span>Thinking</span>
+      <span v-if="!content" class="material-symbols-outlined !text-[10px] animate-pulse text-accent-emerald">circle</span>
+    </button>
+    <div v-if="thinkingOpen && thinking" class="mb-3 text-xs leading-relaxed text-on-tertiary-container/60 whitespace-pre-wrap border-l-2 border-white/10 pl-3">
+      {{ thinking }}
     </div>
-    <div class="flex-1 min-w-0">
-      <div class="flex items-center gap-2 mb-1">
-        <span class="text-xs font-medium text-accent-emerald">Assistant</span>
-        <span class="material-symbols-outlined text-xs animate-pulse text-accent-emerald">circle</span>
-      </div>
-      <div class="markdown-content prose prose-invert prose-zinc max-w-none" v-html="renderedContent"></div>
-    </div>
+
+    <div v-if="content" class="markdown-content prose prose-invert prose-zinc max-w-none" v-html="renderedContent"></div>
+    <span v-else-if="isStreaming" class="inline-block w-1 h-4 bg-accent-emerald animate-pulse align-bottom"></span>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useMarkdown } from '@/composables/useMarkdown'
 
 const props = defineProps({
-  content: String
+  content: String,
+  thinking: String,
+  isStreaming: Boolean,
 })
 
 const { renderMarkdown } = useMarkdown()
+const thinkingOpen = ref(false)
 
 const renderedContent = computed(() => {
   if (!props.content) return ''
-  // Add cursor animation
-  return renderMarkdown(props.content) + '<span class="inline-block w-1 h-4 bg-accent-emerald animate-pulse ml-0.5 align-bottom"></span>'
+  const rendered = renderMarkdown(props.content)
+  if (props.isStreaming) {
+    return rendered + '<span class="inline-block w-1 h-4 bg-accent-emerald animate-pulse ml-0.5 align-bottom"></span>'
+  }
+  return rendered
 })
 </script>
 
 <style scoped>
-/* Scoped styles */
 </style>

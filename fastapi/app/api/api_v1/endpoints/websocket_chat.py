@@ -84,13 +84,19 @@ message_controller: MessageController = obj_graph.provide(MessageController)
 async def websocket_chat_stream(
     websocket: WebSocket,
     session_id: uuid.UUID,
-    message_id: uuid.UUID = Query(..., description="User message ID to stream response for"),
+    message_id: uuid.UUID = Query(None, description="User message ID to stream response for"),
+    content: str = Query(None, description="User message content to send and stream response for"),
     model: str = Query("qwen3:1.7b", description="Model to use for generation"),
 ):
     """
     WebSocket endpoint for streaming chat responses.
 
+    Provide either:
+    - message_id: An existing user message ID to regenerate/stream response for
+    - content: New message content to send and stream response for
+
     Query Parameters:
+    - content: User message content (alternative to message_id)
     - message_id: The user message ID that triggered this stream
     - model: Model name to use (default: qwen3:1.7b)
 
@@ -103,33 +109,45 @@ async def websocket_chat_stream(
     await connection_manager.connect(session_id_str, websocket)
 
     try:
-        # Get the user message content from the database
-        message_repo = MessageRepository()
-        user_message = await message_repo.get_message(message_id)
-
-        if not user_message:
+        # Determine message content from either message_id or direct content param
+        if content:
+            user_content = content
+        elif message_id:
+            message_repo = MessageRepository()
+            user_message = await message_repo.get_message(message_id)
+            if not user_message:
+                await websocket.send_json({
+                    "content": "",
+                    "done": True,
+                    "model": model,
+                    "error": "User message not found",
+                })
+                return
+            if user_message.chat_session_id != session_id:
+                await websocket.send_json({
+                    "content": "",
+                    "done": True,
+                    "model": model,
+                    "error": "Message does not belong to this session",
+                })
+                return
+            user_content = user_message.content
+        else:
             await websocket.send_json({
                 "content": "",
                 "done": True,
                 "model": model,
-                "error": "User message not found",
-            })
-            return
-
-        if user_message.chat_session_id != session_id:
-            await websocket.send_json({
-                "content": "",
-                "done": True,
-                "model": model,
-                "error": "Message does not belong to this session",
+                "error": "Either message_id or content query parameter is required",
             })
             return
 
         # Stream the response using the message controller
-        create_schema = CreateMessageSchema(content=user_message.content, model_name=model)
+        create_schema = CreateMessageSchema(content=user_content, model_name=model)
 
         async for chunk in message_controller.send_message_stream(session_id_str, create_schema):
             await websocket.send_text(chunk.model_dump_json())
+
+        await websocket.close(code=1000)
 
     except WebSocketDisconnect:
         loguru_logger.info(f"WebSocket disconnected for session {session_id_str}")

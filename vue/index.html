@@ -1,20 +1,36 @@
 <!doctype html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Qwen Chat - AI-powered chat interface with Qwen 2.5" />
-    <meta name="theme-color" content="#000000" />
-    <title>Qwen Chat</title>
-    <!-- Material Symbols Outlined -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/assets/orbital-logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Orbital AI - AI-powered chat interface" />
+  <meta name="theme-color" content="#000000" />
+  <title>Orbital AI</title>
+  <!-- Material Symbols Outlined -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <!-- Preload Geist font -->
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Regular.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-SemiBold.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Bold.woff2">
+    <!-- Preload Geist font - Local Variable Fonts -->
+    <link rel="preload" as="font" type="font/ttf" crossorigin href="/assets/fonts/geist/Geist-VariableFont_wght.ttf">
+    <link rel="preload" as="font" type="font/ttf" crossorigin href="/assets/fonts/geist/Geist-Italic-VariableFont_wght.ttf">
+    <style>
+      @font-face {
+        font-family: 'Geist';
+        src: url('/assets/fonts/geist/Geist-VariableFont_wght.ttf') format('truetype');
+        font-weight: 100 900;
+        font-display: swap;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Geist';
+        src: url('/assets/fonts/geist/Geist-Italic-VariableFont_wght.ttf') format('truetype');
+        font-weight: 100 900;
+        font-display: swap;
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>

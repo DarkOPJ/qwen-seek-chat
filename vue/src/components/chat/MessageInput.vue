@@ -15,26 +15,22 @@
           ></textarea>
         </div>
         <div class="flex items-center gap-1">
-          <ModelSelector v-model="selectedModel" :disabled="disabled" />
           <button
+            v-if="isStreaming"
+            class="w-12 h-12 flex items-center justify-center bg-red-600 text-white rounded-full hover:bg-red-500 active:scale-95 transition-all duration-200 shadow-lg"
+            @click="handleStop"
+            title="Stop generating"
+          >
+            <span class="material-symbols-outlined text-lg">stop</span>
+          </button>
+          <button
+            v-else
             class="w-12 h-12 flex items-center justify-center bg-neural-purple text-white rounded-full hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:scale-105 active:scale-95 transition-all duration-200"
             @click="send"
-            :disabled="disabled || !inputValue.trim() || isStreaming"
+            :disabled="!inputValue.trim()"
           >
             <span class="material-symbols-outlined">arrow_upward</span>
           </button>
-        </div>
-      </div>
-      <!-- Bottom Metadata Bar -->
-      <div class="flex items-center justify-between px-6 pb-2 pt-1 border-t border-white/5 mt-1">
-        <div class="flex gap-4">
-          <div class="flex items-center gap-1.5">
-            <div class="w-1.5 h-1.5 rounded-full bg-accent-emerald animate-pulse"></div>
-            <span class="text-[10px] font-bold text-on-tertiary-container uppercase tracking-tight">System Ready</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-3">
-          <span class="text-[10px] font-bold text-on-tertiary-container uppercase tracking-widest">Context: 128k Tokens</span>
         </div>
       </div>
     </div>
@@ -42,8 +38,7 @@
 </template>
 
 <script setup>
-import { ref, watch, nextTick } from 'vue'
-import ModelSelector from './ModelSelector.vue'
+import { ref, nextTick } from 'vue'
 
 const props = defineProps({
   model: String,
@@ -51,15 +46,10 @@ const props = defineProps({
   isStreaming: Boolean
 })
 
-const emit = defineEmits(['send', 'regenerate', 'model-change'])
+const emit = defineEmits(['send', 'stop'])
 
 const textareaRef = ref(null)
 const inputValue = ref('')
-const selectedModel = ref(props.model)
-
-watch(() => props.model, (val) => {
-  selectedModel.value = val
-})
 
 const handleInput = (e) => {
   inputValue.value = e.target.value
@@ -76,9 +66,13 @@ const handleKeydown = (e) => {
   }
 }
 
+const handleStop = () => {
+  emit('stop')
+}
+
 const send = () => {
-  if (inputValue.value.trim() && !props.disabled && !props.isStreaming) {
-    emit('send', inputValue.value.trim(), selectedModel.value)
+  if (inputValue.value.trim() && !props.disabled) {
+    emit('send', inputValue.value.trim(), props.model)
     inputValue.value = ''
     nextTick(() => {
       if (textareaRef.value) {
@@ -88,7 +82,3 @@ const send = () => {
   }
 }
 </script>
-
-<style scoped>
-/* Scoped styles if needed */
-</style>

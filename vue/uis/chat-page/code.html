@@ -5,77 +5,31 @@
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<!-- Geist Font Simulation -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<!-- Geist Font - Local Variable Fonts -->
 <style>
         @font-face {
             font-family: 'Geist';
-            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
-            font-weight: 400;
+            src: url('/assets/fonts/geist/Geist-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
+            font-style: normal;
         }
         @font-face {
             font-family: 'Geist';
-            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
-            font-weight: 600;
-        }
-        @font-face {
-            font-family: 'Geist';
-            src: url('https://cdn.jsdelivr.net/npm/geist@1.0.0/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
-            font-weight: 700;
+            src: url('/assets/fonts/geist/Geist-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-display: swap;
+            font-style: italic;
         }
 
         body {
-            font-family: 'Geist', 'Inter', sans-serif;
+            font-family: 'Geist', sans-serif;
             background-color: #000000;
             overflow: hidden;
             color: #A1A1AA;
         }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(32px);
-            -webkit-backdrop-filter: blur(32px);
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .glass-dark {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(24px);
-            border: 0.5px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .inner-glow {
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-        }
-
-        .neural-glow {
-            filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.4));
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-            font-size: 20px;
-        }
-
-        pre code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-        }
-
-        /* Unicorn Studio Animation Placeholder Simulation */
-        .bg-animation {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
-        }
-    </style>
+</style>
 <!-- Theme Config -->
 <script id="tailwind-config">
         tailwind.config = {
@@ -153,14 +107,14 @@
                         "max-width": "1280px"
                     },
                     "fontFamily": {
-                        "h1-mobile": ["Geist", "Inter"],
-                        "label-caps": ["Geist", "Inter"],
-                        "body-md": ["Geist", "Inter"],
-                        "h2": ["Geist", "Inter"],
-                        "body-lg": ["Geist", "Inter"],
-                        "h1": ["Geist", "Inter"],
-                        "mono-metrics": ["JetBrains Mono"],
-                        "h3": ["Geist", "Inter"]
+                        "h1-mobile": ["Geist", "sans-serif"],
+                        "label-caps": ["Geist", "sans-serif"],
+                        "body-md": ["Geist", "sans-serif"],
+                        "h2": ["Geist", "sans-serif"],
+                        "body-lg": ["Geist", "sans-serif"],
+                        "h1": ["Geist", "sans-serif"],
+                        "mono-metrics": ["JetBrains Mono", "monospace"],
+                        "h3": ["Geist", "sans-serif"]
                     },
                     "fontSize": {
                         "h1-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
@@ -276,7 +230,7 @@
 <img alt="Orbital Logo" class="w-24 h-24 mb-8 neural-glow brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsPeiI26bBI2Lx_GxvwMQzxtLQC4UlU_3lTVhGdh6_t_94NmvCn2FMGDX8z3l8OSMm_oRJUhjk4Ar1Nt4MSv_vWyzuefdSxIyZNGwP8wHSMcdv26BXwlRkkjdiwHR1TMPgkRQQPqPPGHnFsuSG0u0JyGH2pakiKdwx6TmtrBSicqYVai5j1LpOP_1xFTeRFi8oOc49W6Ax0dE4gPg5_fKw4pHhhR6iycfaf-Ck7SKjjMMxg70WjIzvG5VA60tZxRu81xc">
 <h2 class="font-h2 text-h3 md:text-h2 mb-4 text-white">Precision Intelligence.</h2>
 <p class="font-body-lg text-body-lg text-on-secondary-container mb-12 max-w-xl">
-                Design architectures, debug production logic, or orchestrate complex data flows with Orbital’s unified workspace.
+                Design architectures, debug production logic, or orchestrate complex data flows with Orbital&rsquo;s unified workspace.
             </p>
 <!-- Prompt Suggestions Bento -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
@@ -337,7 +291,7 @@
 <!-- Footer (Universal Anchor) -->
 <footer class="fixed bottom-0 left-0 right-0 z-50 pointer-events-none md:pointer-events-auto">
 <div class="bg-black/60 backdrop-blur-xl border-t border-white/5 py-4 px-margin w-full bg-black">
-<div class="flex flex-col md:flex-row justify-between items-center max-w-max-width mx-auto gap-4"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeUdDXsldzZaSiNGHVOZ98NZNEGwBCJb2VkK4W_daxNO4smfgRAV6-vbx60-knUF88kwVVDNne5CdWt_OZEPYAK9If_g719M0RS-fuL7hQpXoBu8sW4EutpoOE9r0BNwCKehI97iIYlwZ4BvDkjb8gf1vmj3iTwVmnJ5Q1a0mCtjS8YOv34BOpQHRaNErU5Zhkyq6IDshhD9gm1hisSwXymdjz6M-A1CFSiunt8ljYPoAoeKqa5mugUkMq8RU6SGIFEss" alt="Orbital Logo" class="w-8 h-8 object-cover"><span class="font-h3 text-h3 font-bold text-white">Orbital</span></div><span class="font-label-caps text-label-caps text-white/50 uppercase tracking-widest">© 2026 ORBITAL AI. ALL RIGHTS RESERVED.</span></div>
+<div class="flex flex-col md:flex-row justify-between items-center max-w-max-width mx-auto gap-4"><div class="flex items-center gap-2"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeUdDXsldzZaSiNGHVOZ98NZNEGwBCJb2VkK4W_daxNO4smfgRAV6-vbx60-knUF88kwVVDNne5CdWt_OZEPYAK9If_g719M0RS-fuL7hQpXoBu8sW4EutpoOE9r0BNwCKehI97iIYlwZ4BvDkjb8gf1vmj3iTwVmnJ5Q1a0mCtjS8YOv34BOpQHRaNErU5Zhkyq6IDshhD9gm1hisSwXymdjz6M-A1CFSiunt8ljYPoAoeKqa5mugUkMq8RU6SGIFEss" alt="Orbital Logo" class="w-8 h-8 object-cover"><span class="font-h3 text-h3 font-bold text-white">Orbital</span></div><span class="font-label-caps text-label-caps text-white/50 uppercase tracking-widest">&copy; 2026 ORBITAL AI. ALL RIGHTS RESERVED.</span></div>
 </div>
 </footer>
 <script>

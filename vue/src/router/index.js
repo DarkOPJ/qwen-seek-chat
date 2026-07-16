@@ -12,11 +12,6 @@ const routes = [
     component: () => import('@/views/ChatView.vue'),
   },
   {
-    path: '/models',
-    name: 'models',
-    component: () => import('@/views/ModelsView.vue'),
-  },
-  {
     path: '/pricing',
     name: 'pricing',
     component: () => import('@/views/PricingView.vue'),

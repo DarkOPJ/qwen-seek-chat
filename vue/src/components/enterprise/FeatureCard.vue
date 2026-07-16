@@ -20,7 +20,7 @@
 <script setup>
 import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
   icon: { type: String, required: true },
   iconColor: { type: String, default: 'neural-indigo' },
   iconBg: { type: String, default: 'neural-indigo/10' },
@@ -29,28 +29,28 @@ defineProps({
   description: { type: String, required: true },
   features: { type: Array, default: () => [] },
   badges: { type: Array, default: () => [] },
-  variant: { type: String, default: 'default' }, // default, accent-glow
+  variant: { type: String, default: 'default' },
   isHighlighted: { type: Boolean, default: false },
 })
 
 const variantClass = computed(() => {
-  if (isHighlighted) return 'border-white/20 relative overflow-hidden'
+  if (props.isHighlighted) return 'border-white/20 relative overflow-hidden'
   return ''
 })
 
 const glowClass = computed(() => {
-  if (isHighlighted) return 'absolute -top-24 -right-24 w-48 h-48 bg-accent-emerald/10 blur-[60px]'
+  if (props.isHighlighted) return 'absolute -top-24 -right-24 w-48 h-48 bg-accent-emerald/10 blur-[60px]'
   return ''
 })
 
-const borderClass = computed(() => `border-${borderColor}`)
+const borderClass = computed(() => `border-${props.borderColor}`)
 
 const iconWrapperClass = computed(() => {
   const base = 'w-14 h-14 rounded-lg flex items-center justify-center mb-8 border'
-  return `${base} bg-${iconBg} border-${iconColor}/20`
+  return `${base} bg-${props.iconBg} border-${props.iconColor}/20`
 })
 
-const iconColorClass = computed(() => `text-${iconColor}`)
+const iconColorClass = computed(() => `text-${props.iconColor}`)
 </script>
 
 <style scoped>

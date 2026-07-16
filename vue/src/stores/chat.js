@@ -38,8 +38,7 @@ export const useChatStore = defineStore('chat', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await getSessions({ page, size })
-      const data = response.data
+      const data = await getSessions({ page, size })
 
       if (page === 1) {
         sessions.value = data.items || []
@@ -68,8 +67,7 @@ export const useChatStore = defineStore('chat', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await createSession({ title, model })
-      const session = response.data
+      const session = await createSession({ title, model })
       sessions.value.unshift(session)
       if (!session.pinned) {
         recentSessions.value.unshift(session)
@@ -88,8 +86,7 @@ export const useChatStore = defineStore('chat', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await getSession(sessionId)
-      return response.data
+      return await getSession(sessionId)
     } catch (err) {
       error.value = err.message || 'Failed to fetch session'
       throw err
@@ -98,12 +95,11 @@ export const useChatStore = defineStore('chat', () => {
     }
   }
 
-  async function updateSessionById(sessionId, data) {
+  async function updateSessionById(sessionId, payload) {
     loading.value = true
     error.value = null
     try {
-      const response = await updateSession(sessionId, data)
-      const updated = response.data
+      const updated = await updateSession(sessionId, payload)
       updateSessionInList(updated)
       return updated
     } catch (err) {

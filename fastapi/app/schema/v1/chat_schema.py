@@ -66,6 +66,8 @@ class MessageChunkSchema(BaseModel):
     done: bool
     model: str
     accumulated_content: Optional[str] = None
+    thinking: Optional[str] = None
+    accumulated_thinking: Optional[str] = None
 
 
 class ChatCompletionRequest(BaseModel):

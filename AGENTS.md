@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository contains a **Qwen Chat application** with:
+This repository contains a **Orbital AI application** with:
 - **Backend**: FastAPI (FastAPI template with PostgreSQL, Redis, Kafka) - in `/fastapi`
 - **Frontend**: Vue 3 + Vite + JavaScript (to be created in `/vue`)
 - **Inference**: Ollama service (to be added via Docker Compose)
@@ -189,8 +189,43 @@ For full-stack features where both frontend and backend are well-defined, use th
 
 ---
 
+## OpenCode Agents
+
+This project uses specialized OpenCode agents for parallel development workflows. Agents are defined in `.opencode/agents/` and configured in `opencode.json`.
+
+### Agent Registry
+
+| Agent | Mode | Purpose |
+|-------|------|---------|
+| **orchestrator** | primary | Primary orchestrator - coordinates all work, delegates to specialists |
+| **planner** | subagent | Creates detailed implementation plans from requirements |
+| **backend-engineer** | subagent | Implements FastAPI backend (MVC, pinject DI, async, Alembic, pytest) |
+| **frontend-developer** | subagent | Implements Vue 3 + Vite + JavaScript frontend (NO TypeScript), Pinia, Axios, WebSocket |
+| **feature-test-security-auditor** | subagent | Runs tests, linting, and security audits (backend + frontend) |
+
+### Agent Workflow
+
+```mermaid
+graph TD
+    A[User Request] --> B[orchestrator]
+    B --> C[planner: Create implementation plan]
+    C --> D[backend-engineer: Implement backend API]
+    C --> E[frontend-developer: Implement frontend UI]
+    D --> F[feature-test-security-auditor: Test & audit]
+    E --> F
+    F --> B
+    B --> A
+```
+
+### Delegation Rules
+- **Always delegate** - Never implement features yourself when a specialist agent exists
+- **Parallel execution** - Run backend-engineer and frontend-developer in parallel after planner completes
+- **Sequential testing** - feature-test-security-auditor runs after implementation completes
+- **One task per delegation** - Give each agent a clear, single objective
+
 ## References
 - Backend README: `/fastapi/README.md`
 - FastAPI docs: https://fastapi.tiangolo.com
 - Vue 3 + Vite: https://vitejs.dev/guide/#scaffolding-your-first-vue-project
 - Ollama API: https://github.com/ollama/ollama/blob/main/docs/api.md
+- OpenCode Agents docs: https://opencode.ai/docs/agents/

@@ -4,6 +4,8 @@
     <div class="neural-orb orb-indigo" aria-hidden="true"></div>
     <div class="neural-orb orb-violet" aria-hidden="true"></div>
 
+    <Navbar />
+
     <div class="relative z-10 text-center px-8">
       <div class="mb-8">
         <span class="font-mono-metrics text-6xl text-neural-purple/50">404</span>
@@ -26,6 +28,7 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import Navbar from '@/components/layout/Navbar.vue'
 
 const router = useRouter()
 

@@ -22,17 +22,14 @@
 
       <!-- Message Body -->
       <div class="relative">
-        <!-- Streaming Message -->
         <StreamingMessage 
-          v-if="isStreaming && streamingContent" 
-          :content="streamingContent" 
+          :content="isStreaming ? streamingContent : message.content"
+          :thinking="isStreaming ? streamingThinking : ''"
+          :is-streaming="isStreaming"
         />
 
-        <!-- Regular Message with Markdown -->
-        <div v-else class="markdown-content prose prose-invert prose-zinc max-w-none" v-html="renderedContent"></div>
-
         <!-- Regenerate Button (for assistant messages) -->
-        <div v-if="message.role === 'assistant' && !isStreaming" class="flex items-center gap-2 mt-3 pt-3 border-t border-white/5">
+        <div v-if="message.role === 'assistant' && !isStreaming" class="flex items-center gap-2 mt-3 pt-3 pb-6 border-t border-white/5">
           <button
             class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-on-tertiary-container hover:text-white transition-colors rounded-lg hover:bg-white/5"
             @click="handleRegenerate"
@@ -55,19 +52,17 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import { useMarkdown } from '@/composables/useMarkdown'
+import { computed } from 'vue'
 import StreamingMessage from './StreamingMessage.vue'
 
 const props = defineProps({
   message: Object,
   isStreaming: Boolean,
-  streamingContent: String
+  streamingContent: String,
+  streamingThinking: String
 })
 
 const emit = defineEmits(['regenerate', 'copy'])
-
-const { renderMarkdown } = useMarkdown()
 
 const avatarClass = computed(() => 
   props.message.role === 'user' 
@@ -89,11 +84,6 @@ const formatTime = (dateStr) => {
   const date = new Date(dateStr)
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
 }
-
-const renderedContent = computed(() => {
-  if (!props.message.content) return ''
-  return renderMarkdown(props.message.content)
-})
 
 const handleRegenerate = () => {
   emit('regenerate', props.message.id)

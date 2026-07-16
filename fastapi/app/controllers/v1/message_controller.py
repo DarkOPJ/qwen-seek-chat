@@ -29,7 +29,9 @@ class MessageController:
                 content=chunk.get("content", ""),
                 done=chunk.get("done", False),
                 model=chunk.get("model", ""),
-                accumulated_content=chunk.get("accumulated_content"),
+                accumulated_content=chunk.get("accumulated_content", ""),
+                thinking=chunk.get("thinking", ""),
+                accumulated_thinking=chunk.get("accumulated_thinking", ""),
             )
 
     async def get_messages(

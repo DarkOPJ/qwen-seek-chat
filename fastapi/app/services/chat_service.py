@@ -210,32 +210,44 @@ class ChatService:
 
         # Stream AI response
         accumulated_content = ""
+        accumulated_thinking = ""
+        thinking_phase = True
         token_count = 0
 
         async for chunk in self.ollama_service.chat_completion_stream(
             messages=messages, model=model
         ):
-            # Extract content from chunk
-            chunk_content = chunk.get("message", {}).get("content", "")
+            msg = chunk.get("message", {})
+            chunk_content = msg.get("content", "")
+            chunk_thinking = msg.get("thinking", "")
+
             done = chunk.get("done", False)
 
-            accumulated_content += chunk_content
+            if chunk_thinking and thinking_phase:
+                accumulated_thinking += chunk_thinking
+
+            if chunk_content:
+                thinking_phase = False
+                accumulated_content += chunk_content
+
             if "eval_count" in chunk:
                 token_count = chunk["eval_count"]
 
             yield {
                 "content": chunk_content,
+                "accumulated_content": accumulated_content,
+                "thinking": chunk_thinking if thinking_phase else "",
+                "accumulated_thinking": accumulated_thinking,
                 "done": done,
                 "model": model,
-                "accumulated_content": accumulated_content,
             }
 
             if done:
-                # Create assistant message in database
+                final_content = accumulated_content or accumulated_thinking
                 assistant_message_data = {
                     "chat_session_id": session_uuid,
                     "role": MessageRole.ASSISTANT,
-                    "content": accumulated_content,
+                    "content": final_content,
                     "model_name": model,
                     "token_count": token_count,
                     "is_streaming": False,
@@ -339,11 +351,69 @@ class ChatService:
         )
 
         history = []
+
+        # Prepend system prompt (from config or session)
+        system_prompt = self._get_system_prompt()
+        if system_prompt:
+            history.append({"role": "system", "content": system_prompt})
+
         for msg in messages:
             role = msg.role.value if isinstance(msg.role, MessageRole) else msg.role
             history.append({"role": role, "content": msg.content})
 
         return history
+
+    def _get_system_prompt(self) -> str:
+        """Return the system prompt for the AI assistant."""
+        return (
+            """
+You are a helpful, knowledgeable AI assistant. Follow these rules for every response.
+ 
+## Formatting Rules (Strict)
+ 
+- Always respond in **Markdown**.
+- Always separate distinct ideas, paragraphs, and list items with proper `\n` newlines — never run sentences together in a single unbroken block.
+- Use headers (`##`, `###`) to organize longer responses into sections.
+- Use bullet points (`-`) or numbered lists (`1.`) when presenting multiple items, steps, or options.
+- Use **bold** for key terms or emphasis, and `inline code` for commands, filenames, variables, or technical terms.
+- Use fenced code blocks with language tags (e.g. ` ```python `) for any code, config, or terminal output.
+- Use `>` blockquotes for quoting sources or highlighting important notes.
+- Use tables when comparing multiple items across multiple attributes.
+- Never output raw unformatted walls of text — break content into scannable, well-spaced sections.
+## Behavior Rules
+ 
+- Be concise by default; expand only when the question requires depth or the user asks for detail.
+- If a request is ambiguous, make a reasonable assumption, state it briefly, and proceed — don't over-ask for clarification.
+- Admit uncertainty rather than guessing confidently on factual claims.
+- Match the user's tone: professional for technical/business queries, casual and friendly for conversational ones.
+- Never fabricate sources, statistics, or citations.
+- If you don't have enough information to answer accurately, say so clearly instead of inventing an answer.
+## Response Structure Template
+ 
+For most substantive answers, follow this shape:
+ 
+1. **Direct answer first** — lead with the core answer or recommendation.
+2. **Supporting detail** — explanation, reasoning, or steps, broken into sections/bullets as needed.
+3. **Optional next step** — a suggestion, caveat, or follow-up question only if genuinely useful.
+## Example Output Style
+ 
+```
+## Summary
+ 
+Short direct answer here.
+ 
+## Details
+ 
+- Point one
+- Point two
+- Point three
+ 
+## Note
+ 
+> Any caveat or important clarification goes here.
+```
+"""
+        )
 
     async def get_available_models(self) -> List[Dict[str, Any]]:
         """Get list of available models from Ollama."""

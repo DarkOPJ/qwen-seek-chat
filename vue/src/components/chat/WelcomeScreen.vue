@@ -7,7 +7,7 @@
     </svg>
     <h2 class="font-h3 text-h3 md:text-h2 mb-4 text-white">Precision Intelligence.</h2>
     <p class="font-body-lg text-body-lg text-on-secondary-container mb-12 max-w-xl">
-      Design architectures, debug production logic, or orchestrate complex data flows with Qwen Chat's unified workspace.
+      Design architectures, debug production logic, or orchestrate complex data flows with  Orbital AI's unified workspace.
     </p>
 
     <!-- Prompt Suggestions Bento -->

@@ -38,9 +38,11 @@ export function deleteMessage(sessionId, messageId) {
   return api.delete(`/chat/api/v1/sessions/${sessionId}/messages/${messageId}`)
 }
 
-// WebSocket endpoint for streaming (matches backend: /chat/api/v1/sessions/{session_id}/stream?message_id={id}&model={model})
-export function getWebSocketUrl(sessionId, messageId, model) {
+// WebSocket endpoint for streaming (matches backend: /chat/api/v1/sessions/{session_id}/stream)
+export function getWebSocketUrl(sessionId, { messageId, content, model }) {
   const baseUrl = import.meta.env.VITE_WS_BASE_URL || 'ws://localhost:8000'
-  const params = new URLSearchParams({ message_id: messageId, model })
+  const params = new URLSearchParams({ model })
+  if (messageId) params.set('message_id', messageId)
+  if (content) params.set('content', content)
   return `${baseUrl}/chat/api/v1/sessions/${sessionId}/stream?${params.toString()}`
 }

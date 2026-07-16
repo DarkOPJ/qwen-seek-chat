@@ -4,31 +4,11 @@
     <div class="neural-orb orb-indigo" aria-hidden="true"></div>
     <div class="neural-orb orb-violet" aria-hidden="true"></div>
 
-    <nav class="docked full-width glass-panel border-b border-white/10">
-      <div class="max-w-[1280px] mx-auto px-[32px] h-20 flex justify-between items-center">
-        <div class="flex items-center gap-2">
-          <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="#000"/>
-            <path d="M8 16C8 11.5817 11.5817 8 16 8C20.4183 8 24 11.5817 24 16C24 20.4183 20.4183 24 16 24C11.5817 24 8 20.4183 8 16Z" stroke="#A855F7" stroke-width="2"/>
-            <path d="M16 8V16L21 19" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="font-h3 text-h3 font-bold text-white">Qwen Chat</span>
-        </div>
-        <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-          <a href="#" class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/')">Models</a>
-          <a href="#" class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/chat')">Workspace</a>
-          <a href="#" class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/pricing')">Pricing</a>
-          <a href="#" class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/enterprise')">Enterprise</a>
-        </div>
-        <button class="bg-white text-black px-6 py-2 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200" @click="navigateTo('/chat')">
-          Get Started
-        </button>
-      </div>
-    </nav>
+    <Navbar />
 
     <main class="relative z-10 pt-24">
-      <div class="max-w-3xl mx-auto px-[32px] py-16">
-        <div class="text-center mb-12">
+      <div class="max-w-3xl mx-auto px-Orbital AI-16">
+        <div class="text-center mb-12">Orbital AI
           <h1 class="font-h1 text-h1-mobile md:text-h1 mb-4 text-white">Settings</h1>
           <p class="font-body-lg text-body-lg text-white/70">Manage your account, preferences, and integrations.</p>
         </div>
@@ -125,14 +105,10 @@
     <footer class="w-full py-[32px] md:py-[180px] bg-black border-t border-white/10 text-white relative overflow-hidden">
       <div class="max-w-[1280px] mx-auto px-[32px] flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="flex items-center gap-2 font-h3 text-h3 font-bold text-white">
-          <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="#000"/>
-            <path d="M8 16C8 11.5817 11.5817 8 16 8C20.4183 8 24 11.5817 24 16C24 20.4183 20.4183 24 16 24C11.5817 24 8 20.4183 8 16Z" stroke="#A855F7" stroke-width="2"/>
-            <path d="M16 8V16L21 19" stroke="#A855F7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Qwen Chat</span>
+          <img :src="orbitalLogo" alt="Orbital AI" class="w-8 h-8 object-contain" />
+          <span>Orbital AI</span>
         </div>
-        <p class="font-label-caps text-label-caps tracking-wider text-white/50">© 2025 QWEN CHAT. ALL RIGHTS RESERVED</p>
+        <p class="font-label-caps text-label-caps tracking-wider text-white/50">© 2025 Orbital AI. ALL RIGHTS RESERVED</p>
       </div>
     </footer>
   </div>
@@ -140,10 +116,12 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import Navbar from '@/components/layout/Navbar.vue'
+import SettingsSection from '@/components/SettingsSection.vue'
 
 const router = useRouter()
 const navigateTo = (path) => router.push(path)
+const orbitalLogo = '../assets/orbital-logo.png'
 </script>
-
 <style scoped>
 </style>

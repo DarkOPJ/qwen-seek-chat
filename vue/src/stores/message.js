@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { getMessages, sendMessage, regenerateMessage, deleteMessage } from '@/api/chat'
-import { createWebSocketConnection, getWebSocketUrl, parseMessage } from '@/api/websocket'
+import { createWebSocketConnection, parseMessage } from '@/api/websocket'
 
 export const useMessageStore = defineStore('message', () => {
   // State
   const messages = ref({}) // Keyed by sessionId: { [sessionId]: Message[] }
   const streamingMessageId = ref(null)
   const streamingContent = ref('')
+  const streamingThinking = ref('')
   const isStreaming = ref(false)
   const streamingTokens = ref(0)
   const streamingError = ref(null)
@@ -25,8 +26,7 @@ export const useMessageStore = defineStore('message', () => {
   // Actions
   async function fetchMessages(sessionId, page = 1, size = 50) {
     try {
-      const response = await getMessages(sessionId, { page, size })
-      const data = response.data
+      const data = await getMessages(sessionId, { page, size })
 
       if (page === 1) {
         messages.value[sessionId] = data.items || []
@@ -43,47 +43,59 @@ export const useMessageStore = defineStore('message', () => {
   }
 
   async function sendUserMessage(sessionId, content, model) {
+    const msgId = `user-${Date.now()}`
+    const assistantId = `assistant-${Date.now()}`
+
     // Create optimistic user message
-    const optimisticMessage = {
-      id: `temp-${Date.now()}`,
+    const userMessage = {
+      id: msgId,
       session_id: sessionId,
       role: 'user',
       content,
       model,
       created_at: new Date().toISOString(),
-      is_optimistic: true,
+    }
+
+    // Create empty assistant message for streaming
+    const assistantMessage = {
+      id: assistantId,
+      session_id: sessionId,
+      role: 'assistant',
+      content: '',
+      model,
+      created_at: new Date().toISOString(),
+      is_streaming: true,
     }
 
     if (!messages.value[sessionId]) messages.value[sessionId] = []
-    messages.value[sessionId].push(optimisticMessage)
+    messages.value[sessionId].push(userMessage)
+    messages.value[sessionId].push(assistantMessage)
 
-    try {
-      const response = await sendMessage(sessionId, { content, model })
-      const serverMessage = response.data
+    streamingMessageId.value = assistantId
+    streamingContent.value = ''
+    streamingThinking.value = ''
+    isStreaming.value = true
+    streamingTokens.value = 0
+    streamingError.value = null
 
-      // Replace optimistic with server response
-      const index = messages.value[sessionId].findIndex(m => m.id === optimisticMessage.id)
-      if (index !== -1) {
-        messages.value[sessionId][index] = serverMessage
-      }
+    // Open WebSocket to stream the response
+    wsConnection.value = createWebSocketConnection({
+      sessionId,
+      content,
+      model,
+      onMessage: handleStreamMessage,
+      onError: handleStreamError,
+      onClose: handleStreamClose,
+      onOpen: handleStreamOpen,
+    })
 
-      // Start streaming for the assistant response
-      startStreaming(sessionId, serverMessage.id, model)
-
-      return serverMessage
-    } catch (error) {
-      // Remove optimistic message on error
-      const index = messages.value[sessionId].findIndex(m => m.id === optimisticMessage.id)
-      if (index !== -1) {
-        messages.value[sessionId].splice(index, 1)
-      }
-      throw error
-    }
+    return { userMessage, assistantMessage }
   }
 
   function startStreaming(sessionId, messageId, model) {
     streamingMessageId.value = messageId
     streamingContent.value = ''
+    streamingThinking.value = ''
     isStreaming.value = true
     streamingTokens.value = 0
     streamingError.value = null
@@ -121,9 +133,9 @@ export const useMessageStore = defineStore('message', () => {
       case 'token':
       case 'content':
       case 'delta':
-        streamingContent.value += parsed.content || ''
+        streamingContent.value = parsed.content || ''
+        streamingThinking.value = parsed.thinking || ''
         streamingTokens.value = parsed.tokens || streamingTokens.value + 1
-        // Update the streaming message content
         updateStreamingMessage()
         break
       case 'done':
@@ -142,6 +154,7 @@ export const useMessageStore = defineStore('message', () => {
     const msg = sessionMessages.find(m => m.id === streamingMessageId.value)
     if (msg) {
       msg.content = streamingContent.value
+      msg.thinking = streamingThinking.value
       msg.is_streaming = true
       msg.tokens = streamingTokens.value
     }
@@ -150,18 +163,28 @@ export const useMessageStore = defineStore('message', () => {
   function finishStreaming(finalTokens = streamingTokens.value) {
     isStreaming.value = false
 
-    if (streamingMessageId.value) {
-      const sessionMessages = Object.values(messages.value).flat()
-      const msg = sessionMessages.find(m => m.id === streamingMessageId.value)
-      if (msg) {
-        msg.content = streamingContent.value
-        msg.is_streaming = false
-        msg.tokens = finalTokens
+    const mid = streamingMessageId.value
+    const finalContent = streamingContent.value
+    const finalThinking = streamingThinking.value
+
+    if (mid) {
+      for (const sid of Object.keys(messages.value)) {
+        const idx = messages.value[sid].findIndex(m => m.id === mid)
+        if (idx !== -1) {
+          messages.value[sid][idx] = {
+            ...messages.value[sid][idx],
+            content: finalContent,
+            is_streaming: false,
+            tokens: finalTokens,
+          }
+          break
+        }
       }
     }
 
     streamingMessageId.value = null
     streamingContent.value = ''
+    streamingThinking.value = ''
     streamingTokens.value = 0
     wsConnection.value = null
   }
@@ -173,8 +196,6 @@ export const useMessageStore = defineStore('message', () => {
 
   function handleStreamClose(event) {
     if (isStreaming.value) {
-      // Connection closed unexpectedly
-      streamingError.value = 'Connection closed unexpectedly'
       finishStreaming()
     }
   }
@@ -185,10 +206,8 @@ export const useMessageStore = defineStore('message', () => {
 
   async function regenerate(sessionId, messageId, model) {
     try {
-      const response = await regenerateMessage(sessionId, messageId, model)
-      const newMessage = response.data
+      const newMessage = await regenerateMessage(sessionId, messageId, model)
 
-      // Find and replace the old message
       const sessionMsgs = messages.value[sessionId] || []
       const index = sessionMsgs.findIndex(m => m.id === messageId)
       if (index !== -1) {
@@ -211,6 +230,13 @@ export const useMessageStore = defineStore('message', () => {
       console.error('Failed to delete message:', error)
       throw error
     }
+  }
+
+  function stopStreaming() {
+    if (wsConnection.value) {
+      wsConnection.value.disconnect()
+    }
+    finishStreaming(streamingTokens.value)
   }
 
   function clearMessages(sessionId) {
@@ -239,6 +265,7 @@ export const useMessageStore = defineStore('message', () => {
     messages,
     streamingMessageId,
     streamingContent,
+    streamingThinking,
     isStreaming,
     streamingTokens,
     streamingError,
@@ -255,6 +282,7 @@ export const useMessageStore = defineStore('message', () => {
     sendUserMessage,
     startStreaming,
     finishStreaming,
+    stopStreaming,
     regenerate,
     removeMessage,
     clearMessages,

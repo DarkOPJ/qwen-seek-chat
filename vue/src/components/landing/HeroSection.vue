@@ -18,7 +18,7 @@
       <div class="relative group">
         <div class="absolute -inset-4 bg-gradient-to-r from-neural-indigo/20 to-neural-purple/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all"></div>
         <div class="glass-panel rounded-3xl overflow-hidden animate-float">
-          <img class="w-full h-auto" alt="Qwen Chat workspace interface showing dark-themed chat with code editor and AI responses" :src="heroImage" />
+          <img class="w-full h-auto" alt="Orbital AI workspace interface showing dark-themed chat with code editor and AI responses" :src="heroImage" />
         </div>
         <div class="absolute -bottom-6 -left-6 glass-panel p-6 rounded-2xl hidden md:block" style="--mouse-x: 2.5px; --mouse-y: 63.75px;">
           <div class="flex items-center gap-3 mb-2">

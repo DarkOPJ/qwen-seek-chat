@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import Navbar from '@/components/layout/Navbar.vue'
 
 const router = useRouter()
 const isLoaded = ref(false)
+const year = new Date().getFullYear()
 
 onMounted(() => {
   requestAnimationFrame(() => {
@@ -83,32 +85,11 @@ const qwenLogo = '/assets/qwen.png'
     <div class="neural-orb orb-violet" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="docked full-width glass-panel border-b border-white/10">
-      <div class="max-w-[1280px] mx-auto px-[32px] h-20 flex justify-between items-center">
-        <!-- Logo -->
-        <div class="flex items-center gap-2">
-          <img :src="orbitalLogo" alt="Qwen Chat Logo" class="w-8 h-8 object-contain" />
-          <span class="font-h3 text-h3 font-bold text-white">Qwen Chat</span>
-        </div>
-
-        <!-- Desktop Nav -->
-        <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-          <a href="#" class="text-white font-bold border-b-2 border-white pb-1 font-body-md text-body-md" @click.prevent>Models</a>
-          <a href="#" class="text-on-secondary-container hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/chat')">Workspace</a>
-          <a href="#" class="text-on-secondary-container hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/pricing')">Pricing</a>
-          <a href="#" class="text-on-secondary-container hover:text-white transition-colors font-body-md text-body-md" @click.prevent="navigateTo('/enterprise')">Enterprise</a>
-        </div>
-
-        <!-- CTA Button -->
-        <button class="bg-white text-black px-6 py-2 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200" @click="navigateTo('/chat')">
-          Get Started
-        </button>
-      </div>
-    </nav>
+    <Navbar />
 
     <main class="relative z-10">
       <!-- Hero Section -->
-      <section class="min-h-screen flex flex-col justify-center px-[32px] max-w-[1280px] mx-auto pt-20">
+      <section class="min-h-screen flex flex-col justify-center px-[32px] max-w-[1280px] mx-auto pt-[120px]">
         <div class="grid lg:grid-cols-2 gap-16 items-center" :class="{ 'opacity-100 translate-y-0': isLoaded, 'opacity-0 translate-y-10': !isLoaded }" style="transition: all 1s ease;">
           <!-- Left Content -->
           <div class="space-y-8">
@@ -132,7 +113,7 @@ const qwenLogo = '/assets/qwen.png'
             <div class="glass-panel rounded-3xl overflow-hidden animate-float">
               <img 
                 class="w-full h-auto" 
-                alt="Qwen Chat workspace interface showing dark-themed chat with code editor and AI responses" 
+                alt="Orbital AI workspace interface showing dark-themed chat with code editor and AI responses" 
                 :src="heroImage"
               />
             </div>
@@ -242,13 +223,13 @@ const qwenLogo = '/assets/qwen.png'
     </main>
 
     <!-- Footer -->
-    <footer class="w-full py-[80px] md:py-[180px] bg-black border-t border-white/10 text-white">
+    <footer class="w-full py-[32px] bg-black border-t border-white/10 text-white">
       <div class="flex flex-col md:flex-row justify-between items-center px-[32px] max-w-[1280px] mx-auto gap-8">
         <div class="flex items-center gap-2">
-          <img :src="orbitalLogo" alt="Qwen Chat Logo" class="w-8 h-8 object-contain" />
-          <span class="font-h3 text-h3 text-white font-bold">Qwen Chat</span>
+          <img :src="orbitalLogo" alt="Orbital AI Logo" class="w-8 h-8 object-contain" />
+          <span class="font-h3 text-h3 text-white font-bold">Orbital AI</span>
         </div>
-        <p class="font-label-caps text-label-caps text-on-tertiary-container uppercase tracking-widest">© 2026 QWEN CHAT. ALL RIGHTS RESERVED.</p>
+        <p class="font-label-caps text-label-caps text-on-tertiary-container uppercase tracking-widest">© {{ year }} Orbital AI. ALL RIGHTS RESERVED.</p>
       </div>
     </footer>
   </div>

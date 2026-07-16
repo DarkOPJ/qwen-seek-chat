@@ -39,14 +39,14 @@
 <script setup>
 import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
   title: { type: String, required: true },
   price: { type: String, required: true },
   period: { type: String, default: '/mo' },
   description: { type: String, required: true },
   ctaText: { type: String, required: true },
   features: { type: Array, required: true },
-  variant: { type: String, default: 'default' }, // default, recommended, enterprise
+  variant: { type: String, default: 'default' },
   isRecommended: { type: Boolean, default: false },
 })
 
@@ -54,7 +54,7 @@ const qwenLogo = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBOVC1IzU0D
 const deepseekLogo = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAo2IyPICTI53qWOaNTB2Hv0YOHjJw2ktEsHbxvbCmMtCXeCIm2xyFOyHX9G4gRaLOIwCVF1e1lmZ6UNj3oWV852e-xCDzxBxf5CQpGdx7R_S0lMTHvULnSJXysiZkVuv0dk3sdmhfYUov6C6H8-Z0z7DWd-ZE3Sq_byVPU_Wge8aC86cXwwkhErYQTxcY0oHBwRWCKZ-j1KFjpHHofyl_2PU0BFb3GnxYxjt8zZH1u6UhH1BErFs0DMMpwNnaG_GeNtiA'
 
 const buttonClass = computed(() => {
-  switch (variant) {
+  switch (props.variant) {
     case 'recommended':
       return 'bg-white text-black hover:bg-white/90'
     case 'enterprise':

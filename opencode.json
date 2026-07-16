@@ -1,0 +1,50 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "orchestrator": {
+      "mode": "primary",
+      "description": "Primary orchestrator - coordinates all work, delegates to specialist subagents",
+      "permission": {
+        "task": {
+          "*": "allow"
+        }
+      }
+    },
+    "planner": {
+      "mode": "subagent",
+      "description": "Creates detailed implementation plans from requirements",
+      "permission": {
+        "task": {
+          "*": "deny"
+        }
+      }
+    },
+    "backend-engineer": {
+      "mode": "subagent",
+      "description": "Implements FastAPI backend (MVC, pinject DI, async, Alembic, pytest)",
+      "permission": {
+        "task": {
+          "*": "deny"
+        }
+      }
+    },
+    "frontend-developer": {
+      "mode": "subagent",
+      "description": "Implements Vue 3 + Vite + JavaScript frontend (NO TypeScript), Pinia, Axios, WebSocket",
+      "permission": {
+        "task": {
+          "*": "deny"
+        }
+      }
+    },
+    "feature-test-security-auditor": {
+      "mode": "subagent",
+      "description": "Runs tests, linting, and security audits (backend + frontend)",
+      "permission": {
+        "task": {
+          "*": "deny"
+        }
+      }
+    }
+  }
+}
