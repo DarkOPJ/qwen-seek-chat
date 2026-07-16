@@ -33,8 +33,6 @@
             :key="msg.id"
             :message="msg"
             :is-streaming="messageStore.streamingMessageId === msg.id"
-            :streaming-content="messageStore.streamingContent"
-            :streaming-thinking="messageStore.streamingThinking"
             @regenerate="handleRegenerate"
           />
         </div>

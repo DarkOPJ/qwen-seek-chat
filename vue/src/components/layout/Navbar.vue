@@ -13,15 +13,32 @@
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-        <NavLink :to="{ name: 'home' }" :active="isActive('home')">Home</NavLink>
-        <NavLink :to="{ name: 'chat' }" :active="isActive('chat')">Workspace</NavLink>
-        <NavLink :to="{ name: 'pricing' }" :active="isActive('pricing')">Pricing</NavLink>
-        <NavLink :to="{ name: 'enterprise' }" :active="isActive('enterprise')">Enterprise</NavLink>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('home') }"
+          @click="router.push({ name: 'home' })"
+        >Home</button>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('chat') }"
+          @click="router.push({ name: 'chat' })"
+        >Workspace</button>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('pricing') }"
+          @click="router.push({ name: 'pricing' })"
+        >Pricing</button>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('enterprise') }"
+          @click="router.push({ name: 'enterprise' })"
+        >Enterprise</button>
       </div>
 
       <!-- Desktop CTA -->
-      <button class="hidden md:block bg-white text-black px-6 py-2 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200" @click="navigateToChat">
-        Get Started
+      <button class="hidden md:flex items-center gap-2 bg-white text-black px-6 py-2 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200" @click="navigateToChat">
+        <span v-if="isActive('chat')" class="material-symbols-outlined !text-[18px]">auto_awesome</span>
+        <span v-else>Get Started</span>
       </button>
 
       <!-- Mobile Menu Button -->
@@ -41,13 +58,30 @@
       class="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-[32px] z-50 animate-slide-down"
     >
       <div class="flex flex-col items-center gap-4">
-        <NavLink :to="{ name: 'home' }" :active="isActive('home')" @click="closeMobileMenu">Home</NavLink>
-        <NavLink :to="{ name: 'chat' }" :active="isActive('chat')" @click="closeMobileMenu">Workspace</NavLink>
-        <NavLink :to="{ name: 'pricing' }" :active="isActive('pricing')" @click="closeMobileMenu">Pricing</NavLink>
-        <NavLink :to="{ name: 'enterprise' }" :active="isActive('enterprise')" @click="closeMobileMenu">Enterprise</NavLink>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('home') }"
+          @click="navigateTo('home')"
+        >Home</button>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('chat') }"
+          @click="navigateTo('chat')"
+        >Workspace</button>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('pricing') }"
+          @click="navigateTo('pricing')"
+        >Pricing</button>
+        <button
+          class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 bg-transparent border-none cursor-pointer"
+          :class="{ 'text-white font-semibold border-b-2 border-white pb-1': isActive('enterprise') }"
+          @click="navigateTo('enterprise')"
+        >Enterprise</button>
         <div class="w-full pt-4 border-t border-white/10"></div>
-        <button class="w-full bg-white text-black px-6 py-3 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200" @click="navigateToChat">
-          Get Started
+        <button class="w-full bg-white text-black px-6 py-3 rounded-full font-label-caps text-label-caps font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200 flex items-center justify-center gap-2" @click="navigateToChat">
+          <span v-if="isActive('chat')" class="material-symbols-outlined !text-[18px]">auto_awesome</span>
+          <span v-else>Get Started</span>
         </button>
       </div>
     </div>
@@ -73,6 +107,11 @@ const mobileMenuOpen = ref(false)
 
 const isActive = (name) => {
   return route.name === name
+}
+
+const navigateTo = (name) => {
+  router.push({ name })
+  mobileMenuOpen.value = false
 }
 
 const navigateToChat = () => {

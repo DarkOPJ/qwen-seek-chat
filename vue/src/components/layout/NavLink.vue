@@ -1,12 +1,11 @@
 <template>
-  <a
-    href="#"
-    class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 cursor-pointer"
+  <button
+    class="text-white/70 hover:text-white transition-colors font-body-md text-body-md py-2 cursor-pointer bg-transparent border-none"
     :class="{ 'text-white font-semibold border-b-2 border-white pb-1': active }"
-    @click.prevent="navigate"
+    @click="navigate"
   >
     <slot />
-  </a>
+  </button>
 </template>
 
 <script setup>

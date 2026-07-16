@@ -63,7 +63,7 @@ function translateBackendChunk(chunk) {
     return { type: 'error', error: chunk.error }
   }
   if (chunk.done) {
-    return { type: 'done', content: '', tokens: chunk.tokens || 0, message_id: chunk.message_id }
+    return { type: 'done', content: chunk.accumulated_content || chunk.content || '', tokens: chunk.tokens || 0, message_id: chunk.message_id }
   }
   return {
     type: 'content',

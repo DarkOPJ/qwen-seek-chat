@@ -139,6 +139,11 @@ export const useMessageStore = defineStore('message', () => {
         updateStreamingMessage()
         break
       case 'done':
+        if (parsed.content) {
+          streamingContent.value = parsed.content
+          streamingThinking.value = parsed.thinking || ''
+          updateStreamingMessage()
+        }
         finishStreaming(parsed.tokens)
         break
       case 'error':
@@ -161,27 +166,24 @@ export const useMessageStore = defineStore('message', () => {
   }
 
   function finishStreaming(finalTokens = streamingTokens.value) {
-    isStreaming.value = false
-
     const mid = streamingMessageId.value
     const finalContent = streamingContent.value
     const finalThinking = streamingThinking.value
 
     if (mid) {
       for (const sid of Object.keys(messages.value)) {
-        const idx = messages.value[sid].findIndex(m => m.id === mid)
-        if (idx !== -1) {
-          messages.value[sid][idx] = {
-            ...messages.value[sid][idx],
-            content: finalContent,
-            is_streaming: false,
-            tokens: finalTokens,
-          }
+        const msg = messages.value[sid].find(m => m.id === mid)
+        if (msg) {
+          msg.content = finalContent
+          msg.thinking = finalThinking
+          msg.is_streaming = false
+          msg.tokens = finalTokens
           break
         }
       }
     }
 
+    isStreaming.value = false
     streamingMessageId.value = null
     streamingContent.value = ''
     streamingThinking.value = ''

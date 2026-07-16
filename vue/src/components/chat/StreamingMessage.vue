@@ -40,6 +40,3 @@ const renderedContent = computed(() => {
   return rendered
 })
 </script>
-
-<style scoped>
-</style>
